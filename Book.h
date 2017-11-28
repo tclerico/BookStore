@@ -7,7 +7,7 @@
 
 #include "LinkedQueue.h"
 
-class book {
+class Book {
 
 private:
     std::string title;
@@ -21,12 +21,12 @@ public:
     /**
      * constructor
      */
-    book(std::string titleIn, int haveIn, int wantIn);
+    Book(std::string titleIn, int haveIn, int wantIn);
 
     /**
      * destructor
      */
-    ~book();
+    ~Book();
 
     /**
      * gets the name of the book

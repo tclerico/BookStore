@@ -2,12 +2,12 @@
 // Created by Dylan Shane on 11/28/17.
 //
 
-#include "book.h"
+#include "Book.h"
 
 /**
  * constructor
  */
-book::book(std::string titleIn, int haveIn, int wantIn){
+Book::Book(std::string titleIn, int haveIn, int wantIn){
     title = titleIn;
     have = haveIn;
     want = wantIn;
@@ -18,7 +18,7 @@ book::book(std::string titleIn, int haveIn, int wantIn){
 /**
  * destructor
  */
-book::~book(){
+Book::~Book(){
     //TODO
 }
 
@@ -26,7 +26,7 @@ book::~book(){
  * gets the name of the book
  * @return book title
  */
-std::string book::getName(){
+std::string Book::getName(){
     return title;
 }
 
@@ -34,7 +34,7 @@ std::string book::getName(){
  * gets the have value of the book
  * @return have value
  */
-int book::getHave(){
+int Book::getHave(){
     return have;
 }
 
@@ -42,21 +42,21 @@ int book::getHave(){
  * gets the want value of the book
  * @return want value
  */
-int book::getWant(){
+int Book::getWant(){
     return want;
 }
 
 /**
  * adds param (num) to books have value
  */
-book::addBooks(int num){
+Book::addBooks(int num){
     have += num;
 }
 
 /**
  * adds param (personToAdd) to LinkedQueue of people
  */
-book::addPerson(person personToAdd){
+Book::addPerson(person personToAdd){
     //TODO
 }
 
@@ -64,7 +64,7 @@ book::addPerson(person personToAdd){
  * removes the first person in the queue waiting for the book
  * @return the person's name
  */
-std::string book::removePerson(){
+std::string Book::removePerson(){
     //TODO
 }
 
@@ -72,7 +72,7 @@ std::string book::removePerson(){
  * checks if there is a waiting list
  * @return true if there is a waiting list
  */
-bool book::hasWaitingList(){
+bool Book::hasWaitingList(){
     return (numPeopleWaiting == 0);
 }
 
@@ -80,6 +80,6 @@ bool book::hasWaitingList(){
  * creates a string of the information for the book
  * @return string of book information
  */
-std::string book::toString(){
+std::string Book::toString(){
     return title + " have: " + std::to_string(have) + " want: " + std::to_string(want) + " " + std::to_string(numPeopleWaiting) + " people waiting.";
 }
