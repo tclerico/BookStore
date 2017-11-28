@@ -5,6 +5,7 @@
 #ifndef BOOKSTORE_BOOK_H
 #define BOOKSTORE_BOOK_H
 
+#include "LinkedQueue.h"
 
 class book {
 
@@ -12,7 +13,7 @@ private:
     std::string title;
     int have;
     int want;
-    //LinkedQueue people;
+    LinkedQueue* waitingList;
     int numPeopleWaiting;
 
 public:
@@ -20,7 +21,7 @@ public:
     /**
      * constructor
      */
-    book();
+    book(std::string titleIn, int haveIn, int wantIn);
 
     /**
      * destructor
