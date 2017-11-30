@@ -26,14 +26,13 @@ public:
 
     //constructor
     Person(std::string name, std::string email, std::string phone, std::string prefer);
-    //copy constructor
-    Person(const Person& personToCopy);
+
 
     //Getters and Setters
-    std::string setName(std::string newName);
-    std::string setEmail(std::string newEmail);
-    std::string setPhone(std::string newPhone);
-    std::string setPref(std::string newPref);
+    void setName(std::string newName);
+    void setEmail(std::string newEmail);
+    void setPhone(std::string newPhone);
+    void setPref(std::string newPref);
 
     std::string getName();
     std::string getEmail();
