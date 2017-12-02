@@ -4,7 +4,6 @@
 
 
 #include "LinkedList.h"
-#include "Book.h"
 #include "BookStore.h"
 #include <iostream>
 
@@ -21,7 +20,7 @@ void BookStore::add(std::string title, int have, int want) {
         numBooks++;
     } else {
         std::cout << "That book already exists." << std::endl;
-        std::cout << inventory->getValueAt(bookFound)->toString() << std::endl;
+        std::cout << inventory->getBookAt(bookFound)->toString() << std::endl;
     }
 }
 
@@ -30,7 +29,7 @@ std::string BookStore::printInventory() {
         return "Our Inventory is empty.";
     } else {
         for(int i = 0; i < numBooks; i++){
-            std::cout << inventory->getValueAt(i)->toString() << std::endl;
+            return inventory->toString();
         }
     }
 }

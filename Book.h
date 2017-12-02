@@ -6,8 +6,8 @@
 #define BOOKSTORE_BOOK_H
 
 #include <string>
-#include "LinkedQueue.h"
-#include "Person.h"
+//#include "LinkedQueue.h"
+//#include "Person.h"
 
 class Book {
 
@@ -15,8 +15,9 @@ private:
     std::string title;
     int have;
     int want;
-    LinkedQueue* waitingList;
+    //LinkedQueue* waitingList;
     int numPeopleWaiting;
+    Book* next;
 
 public:
 
@@ -75,6 +76,10 @@ public:
      * @return string of book information
      */
     std::string toString();
+
+    Book* getNext();
+
+    void setNext(Book* newNext);
 
 };
 

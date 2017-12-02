@@ -3,5 +3,5 @@ project(BookStore)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp Person.cpp Book.cpp BookStore.cpp)
+set(SOURCE_FILES main.cpp Book.cpp BookStore.cpp LinkedList.cpp)
 add_executable(BookStore ${SOURCE_FILES})

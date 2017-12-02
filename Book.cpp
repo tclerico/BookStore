@@ -3,7 +3,6 @@
 //
 
 #include "Book.h"
-//#include "Person.h"
 
 /**
  * constructor
@@ -13,7 +12,8 @@ Book::Book(std::string titleIn, int haveIn, int wantIn){
     have = haveIn;
     want = wantIn;
     numPeopleWaiting = 0;
-    waitingList = nullptr; //should waitlist point to the begining of the queue?
+    //waitingList = new LinkedQueue<Person>; //should waitlist point to the begining of the queue?
+    next = nullptr;
 }
 
 /**
@@ -65,7 +65,8 @@ void Book::addBooks(int num){
  * adds param (personToAdd) to LinkedQueue of people
  */
 void Book::addPerson(std::string name,std::string email, std::string phone,std::string prefer){
-    Person personToAdd  = Person(name,email,phone,prefer);
+    //TODO
+    /*Person personToAdd  = Person(name,email,phone,prefer);
     if(waitingList=nullptr){
         waitingList = new LinkedQueue();
         LinkedNode* newNode = new LinkedNode(personToAdd);
@@ -73,7 +74,7 @@ void Book::addPerson(std::string name,std::string email, std::string phone,std::
     }else{
         LinkedNode* newNode = new LinkedNode(personToAdd);
         waitingList->enqueue(newNode);
-    }
+    }*/
 }
 
 /**
@@ -81,7 +82,8 @@ void Book::addPerson(std::string name,std::string email, std::string phone,std::
  * @return the person's name
  */
 std::string Book::removePerson(){
-    waitingList->dequeue();
+    //TODO
+    //waitingList->dequeue();
 }
 
 /**
@@ -98,4 +100,12 @@ bool Book::hasWaitingList(){
  */
 std::string Book::toString(){
     return title + " have: " + std::to_string(have) + " want: " + std::to_string(want) + " " + std::to_string(numPeopleWaiting) + " people waiting.";
+}
+
+Book* Book::getNext(){
+    return next;
+}
+
+void Book::setNext(Book* newNext){
+    next = newNext;
 }
