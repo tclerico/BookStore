@@ -73,7 +73,7 @@ public:
  * @throws out_of_range exception if index is invalid
  */
 //BIG-O: O(N)
-    int getValueAt(int index);
+    T getValueAt(int index);
 
 /**
  * removes the item at index from the list, and returns a copy of that item
@@ -83,7 +83,7 @@ public:
  * @throws out_of_range exception if index is invalid
  */
 //BIG-O: O(N)
-    int removeValueAt(int index);
+    T removeValueAt(int index);
 
 /**
  * checks if there are any valid items in the list
