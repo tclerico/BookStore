@@ -15,6 +15,7 @@ LinkedQueue<T>::LinkedQueue(){
 }
 
 //Copy Constructor
+
 LinkedQueue::LinkedQueue(const LinkedQueue& queueToCopy){
     front = nullptr;
     end = nullptr;
