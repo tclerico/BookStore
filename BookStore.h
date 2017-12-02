@@ -6,7 +6,7 @@
 #define BOOKSTORE_BOOKSTORE_H
 
 
-#include "LinkedList.h.h"
+#include "LinkedList.h"
 
 class BookStore {
 
