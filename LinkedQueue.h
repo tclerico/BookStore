@@ -13,8 +13,6 @@
  * Represents a FIFO data structure (First In First Out). Picture a line
  * to wait for something (first person in is the first person out)
  */
-template <class T>
-
 class LinkedQueue {
 private:
     LinkedNode* front;
@@ -32,7 +30,7 @@ public:
     ~LinkedQueue();
     
     //adds an item to the end of the queue
-    void enqueue(T item);
+    void enqueue(std::string item);
 
     //takes an item off the front of the queue and returns it
     //throws out_of_range exception if the queue is empty

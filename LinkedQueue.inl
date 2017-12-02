@@ -3,8 +3,13 @@
 //
 #include "LinkedQueue.h"
 
+
 //Creates an empty queue
-LinkedQueue::LinkedQueue(){
+
+
+template <class T>
+
+LinkedQueue<T>::LinkedQueue(){
     front = nullptr;
     end = nullptr;
 }
@@ -31,7 +36,8 @@ LinkedQueue::~LinkedQueue(){
 
 
 //adds an item to the end of the queue
-void LinkedQueue::enqueue(std::string item){
+template <class T>
+void LinkedQueue::enqueue(T item){
     LinkedNode* newNode = new LinkedNode(item);
     //if front is nullptr, end should be nullptr too
     if (front == nullptr){
@@ -46,7 +52,9 @@ void LinkedQueue::enqueue(std::string item){
 
 //takes an item off the front of the queue and returns it
 //throws out_of_range exception if the queue is empty
-std::string LinkedQueue::dequeue(){
+
+template <class T>
+ T LinkedQueue::dequeue(){
     //TODO, consider cases where:
     // the queue is empty
     // the queue has one item
@@ -54,7 +62,7 @@ std::string LinkedQueue::dequeue(){
     if (isEmpty()){
         throw std::out_of_range("Error. Out of range.");
     } if (front == end){
-        std::string returnItem = front->getItem();
+        T returnItem = front->getItem();
         delete front;
         front = nullptr;
         end = nullptr;
@@ -62,7 +70,7 @@ std::string LinkedQueue::dequeue(){
     } else {
         LinkedNode *temp = front;
         front = front->getNext();
-        std::string returnItem = temp->getItem();
+        T returnItem = temp->getItem();
         delete temp;
         return returnItem;
     }
