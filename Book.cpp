@@ -81,7 +81,7 @@ void Book::addPerson(std::string name,std::string email, std::string phone,std::
  * @return the person's name
  */
 std::string Book::removePerson(){
-    //TODO
+    waitingList->dequeue();
 }
 
 /**
