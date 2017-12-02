@@ -15,7 +15,7 @@ LinkedQueue<T>::LinkedQueue(){
 }
 
 //Copy Constructor
-LinkedQueue::LinkedQueue(const LinkedQueue& queueToCopy){
+LinkedQueue<T>::LinkedQueue(const LinkedQueue& queueToCopy){
     front = nullptr;
     end = nullptr;
     LinkedNode* ptr = queueToCopy.front;
@@ -26,7 +26,7 @@ LinkedQueue::LinkedQueue(const LinkedQueue& queueToCopy){
 }
 
 //Destructor
-LinkedQueue::~LinkedQueue(){
+LinkedQueue<T>::~LinkedQueue(){
     while (front != nullptr){
         LinkedNode* temp = end;
         front = front->getNext();
@@ -37,7 +37,7 @@ LinkedQueue::~LinkedQueue(){
 
 //adds an item to the end of the queue
 template <class T>
-void LinkedQueue::enqueue(T item){
+void LinkedQueue<T>::enqueue(T item){
     LinkedNode* newNode = new LinkedNode(item);
     //if front is nullptr, end should be nullptr too
     if (front == nullptr){
@@ -54,7 +54,7 @@ void LinkedQueue::enqueue(T item){
 //throws out_of_range exception if the queue is empty
 
 template <class T>
- T LinkedQueue::dequeue(){
+ T LinkedQueue<T>::dequeue(){
     //TODO, consider cases where:
     // the queue is empty
     // the queue has one item
@@ -77,6 +77,6 @@ template <class T>
 }
 
 //returns true if the queue has no items, false otherwise
-bool LinkedQueue::isEmpty(){
+bool LinkedQueue<T>::isEmpty(){
     return front == nullptr;
 }
