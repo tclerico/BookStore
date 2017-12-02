@@ -5,7 +5,9 @@
 #ifndef BOOKSTORE_BOOK_H
 #define BOOKSTORE_BOOK_H
 
+#include <string>
 #include "LinkedQueue.h"
+#include "Person.h"
 
 class Book {
 
@@ -49,12 +51,12 @@ public:
     /**
      * adds param (num) to books have value
      */
-    addBooks(int num);
+    void addBooks(int num);
 
     /**
-     * adds param (personToAdd) to LinkedQueue of people
+     * adds param (personToAdd) to LinkedQueue (waitlist) of people
      */
-    addPerson(person personToAdd);
+    void addPerson(std::string name,std::string email, std::string phone,std::string prefer);
 
     /**
      * removes the first person in the queue waiting for the book

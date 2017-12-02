@@ -3,6 +3,7 @@
 //
 
 #include "Book.h"
+//#include "Person.h"
 
 /**
  * constructor
@@ -49,14 +50,14 @@ int Book::getWant(){
 /**
  * adds param (num) to books have value
  */
-Book::addBooks(int num){
+void Book::addBooks(int num){
     have += num;
 }
 
 /**
  * adds param (personToAdd) to LinkedQueue of people
  */
-Book::addPerson(person personToAdd){
+void Book::addPerson(std::string name,std::string email, std::string phone,std::string prefer){
     //TODO
 }
 
