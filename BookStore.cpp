@@ -20,8 +20,8 @@ void BookStore::add(std::string title, int have, int want) {
         inventory->insertAtFront(bookToAdd);
         numBooks++;
     } else {
-        cout << "That book already exists." << std::endl;
-        cout << inventory->getValueAt(bookFound)->toString() << std::endl;
+        std::cout << "That book already exists." << std::endl;
+        std::cout << inventory->getValueAt(bookFound)->toString() << std::endl;
     }
 }
 
@@ -30,7 +30,7 @@ std::string BookStore::printInventory() {
         return "Our Inventory is empty.";
     } else {
         for(int i = 0; i < numBooks; i++){
-            cout << inventory->getValueAt(i)->toString() << std::endl;
+            std::cout << inventory->getValueAt(i)->toString() << std::endl;
         }
     }
 }
