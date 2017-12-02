@@ -13,7 +13,7 @@
      * might be a good idea to template this for use in the inventory/waitlist
      */
 
-
+    template <class T>
 class LinkedList {
 
 
@@ -44,7 +44,7 @@ public:
  * @post the list has an additional value in it, at the end
  */
 //BIG-O: O(1)
-    void insertAtEnd(int itemToAdd);
+    void insertAtEnd(T itemToAdd);
 
 /**
  * appends the new item to the beginning of the list
@@ -53,7 +53,7 @@ public:
  *    all other items are shifted down by one index
  */
 //BIG-O: O(1)
-    void insertAtFront(int itemToAdd);
+    void insertAtFront(T itemToAdd);
 
 /**
  * inserts the item into the list so that it can be found with get(index)
@@ -64,7 +64,7 @@ public:
  * @throws out_of_range exception if index is invalid (< 0 or >currItemCount)
  */
 //BIG-O: O(N)
-    void insertAt(int itemToAdd, int index);
+    void insertAt(T itemToAdd, int index);
 
 /**
  * gets a value from the list
@@ -126,7 +126,7 @@ public:
  * @return the index of the first occurrence of numToFind if it is present, otherwise returns -1
  */
 //BIG-O: O(N)
-    int find(int numToFind);
+    int find(T valueToFind);
 
 /**
  * Searches an int array for a certain value
@@ -142,6 +142,8 @@ public:
     LinkedNode *getFront();
 
 };
+
+#include "LinkedList.inl"
 
 
 
