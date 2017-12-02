@@ -41,4 +41,5 @@ public:
 
 };
 
+#include "LinkedQueue.inl"
 #endif //STACKSANDQUEUES_QUEUE_H
