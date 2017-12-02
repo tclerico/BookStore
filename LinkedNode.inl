@@ -9,24 +9,24 @@ LinkedNode<T>::LinkedNode(T item){
     next = nullptr;
 }
 template <class T>
-LinkedNode::LinkedNode(const LinkedNode& nodeToCopy){
+LinkedNode<T>::LinkedNode(const LinkedNode& nodeToCopy){
     item = nodeToCopy.item;
     next = nullptr;
 }
 template <class T>
-T LinkedNode::getItem(){
+T LinkedNode<T>::getItem(){
     return item;
 }
 template <class T>
-LinkedNode* LinkedNode::getNext(){
+LinkedNode* LinkedNode<T>::getNext(){
     return next;
 }
 
 template <class T>
-void LinkedNode::setItem(T newItem){
+void LinkedNode<T>::setItem(T newItem){
     item = newItem;
 }
 template <class T>
-void LinkedNode::setNext(LinkedNode* newNext){
+void LinkedNode<T>::setNext(LinkedNode* newNext){
     next = newNext;
 }
