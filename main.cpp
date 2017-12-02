@@ -1,15 +1,14 @@
 #include <iostream>
+#include "BookStore.h"
+#include "Book.h"
 
 int main() {
 
+    BookStore* inventory = new BookStore();
 
-    //cristian was here
-    std::cout << "Hello, World!" << std::endl;
+    inventory->add("Hatchet", 3, 7);
 
-    std::cout << "This is a test for Git" << std::endl;
-
-    //test push
-    //test
+    std::cout << inventory->printInventory() << std::endl;
 
     return 0;
 }
