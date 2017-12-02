@@ -201,16 +201,16 @@ void LinkedList::clearList(){
 
 //O(n)
 std::string LinkedList::toString(){
-    std::string returnString = "{";
     if (front == nullptr){
-        return returnString + "}";
+        return "Our inventory is empty.";
     }
     Book* currentBook = front;
-    while (currentBook->getNext() != nullptr){
+    std::string returnString = "";
+    while (currentBook != nullptr){
         returnString += currentBook->toString() + "\n";
         currentBook = currentBook->getNext();
     }
-    return returnString + currentBook->toString() + "}";
+    return returnString;
 
 
 }
