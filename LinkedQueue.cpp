@@ -11,25 +11,13 @@ LinkedQueue::LinkedQueue(){
 
 //Copy Constructor
 LinkedQueue::LinkedQueue(const LinkedQueue& queueToCopy){
-    if (queueToCopy.front == nullptr){
-        front = nullptr;
-        end = nullptr;
-        return;
-    } else {
-        LinkedNode* currentNode = queueToCopy.front;
-        front = new LinkedNode(currentNode->getItem());
-        LinkedNode* endNode = front;
-        currentNode = currentNode->getNext();
-        while (currentNode != nullptr) {
-            std::string itemToAdd = currentNode->getItem();
-            LinkedNode* newNode = new LinkedNode(itemToAdd);
-            endNode->setNext(newNode);
-            endNode = newNode;
-            currentNode = currentNode->getNext();
-        }
-        end = endNode;
+    front = nullptr;
+    end = nullptr;
+    LinkedNode* ptr = queueToCopy.front;
+    while(ptr!= nullptr){
+        this->enqueue(ptr->getItem());
+        ptr = ptr->getNext();
     }
-    return;
 }
 
 //Destructor

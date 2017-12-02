@@ -13,7 +13,7 @@ Book::Book(std::string titleIn, int haveIn, int wantIn){
     have = haveIn;
     want = wantIn;
     numPeopleWaiting = 0;
-    waitingList = nullptr;
+    waitingList = nullptr; //should waitlist point to the begining of the queue?
 }
 
 /**
@@ -22,6 +22,8 @@ Book::Book(std::string titleIn, int haveIn, int wantIn){
 Book::~Book(){
     //TODO
 }
+
+//GETTERS
 
 /**
  * gets the name of the book
@@ -47,6 +49,11 @@ int Book::getWant(){
     return want;
 }
 
+//SETTERS
+
+
+
+
 /**
  * adds param (num) to books have value
  */
@@ -58,7 +65,15 @@ void Book::addBooks(int num){
  * adds param (personToAdd) to LinkedQueue of people
  */
 void Book::addPerson(std::string name,std::string email, std::string phone,std::string prefer){
-    //TODO
+    Person personToAdd  = Person(name,email,phone,prefer);
+    if(waitingList=nullptr){
+        waitingList = new LinkedQueue();
+        LinkedNode* newNode = new LinkedNode(personToAdd);
+        waitingList->enqueue(newNode);
+    }else{
+        LinkedNode* newNode = new LinkedNode(personToAdd);
+        waitingList->enqueue(newNode);
+    }
 }
 
 /**
