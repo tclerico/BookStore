@@ -5,6 +5,7 @@
 
 #include "LinkedList.h"
 
+
 //creates an empty LinkedList
 LinkedList::LinkedList() {
     front = nullptr;
@@ -58,9 +59,9 @@ LinkedList& LinkedList::operator=(const LinkedList& toCopy){
     }
 }
 
-
+template <class T>
 //appends new item to the end of the list
-void LinkedList::insertAtEnd(int itemToAdd){
+void LinkedList::insertAtEnd(T itemToAdd){
     LinkedNode* newNode = new LinkedNode(itemToAdd);
     //if front is nullptr, end should be nullptr too
     if (front == nullptr){
@@ -73,16 +74,18 @@ void LinkedList::insertAtEnd(int itemToAdd){
     }
 }
 
+template <class T>
 //appends new item to the front of the list
-void LinkedList::insertAtFront(int itemToAdd) {
+void LinkedList::insertAtFront(T itemToAdd) {
     LinkedNode* newItem = new LinkedNode(itemToAdd);
     LinkedNode* ptr = front;
     front = newItem;
     newItem->setNext(ptr);
 }
 
+template <class T>
 //Insert the item into the list
-void LinkedList::insertAt(int itemToAdd, int index) {
+void LinkedList::insertAt(T itemToAdd, int index) {
     if(index>this->itemCount() || index<0){
         throw std:: out_of_range("INDEX IS OUT OF RANGE");
     }else {
@@ -113,12 +116,13 @@ void LinkedList::insertAt(int itemToAdd, int index) {
     }
 }
 
+template <class T>
 //returns value from given index
-int LinkedList::getValueAt(int index) {
+T LinkedList::getValueAt(int index) {
     if(index>this->itemCount()-1 || index<0){
         throw std:: out_of_range("INVALID INDEX");
     }else {
-        int item;
+        T item;
         LinkedNode *ptr = front;
         for (int x = 0; x < index; x++) {
             ptr = ptr->getNext();
@@ -128,9 +132,10 @@ int LinkedList::getValueAt(int index) {
     }
 }
 
+template <class T>
 //removes the item at the index
 //returns copy of item
-int LinkedList::removeValueAt(int index){
+T LinkedList::removeValueAt(int index){
     if(index>this->itemCount()-1 || index<0){
         throw std:: out_of_range("INVALID INDEX");
     }
@@ -140,7 +145,7 @@ int LinkedList::removeValueAt(int index){
 
         //if only one item in list
         if(num==1){
-            int item = front->getItem();
+            T item = front->getItem();
             delete front;
             front = nullptr;
             end = nullptr;
@@ -153,7 +158,7 @@ int LinkedList::removeValueAt(int index){
             for (int x = 0; x < index - 1; x++) {
                 before = before->getNext();
             }
-            int item = before->getNext()->getItem();
+            T item = before->getNext()->getItem();
             delete before->getNext();
             before->setNext(nullptr);
             end = before;
@@ -162,7 +167,7 @@ int LinkedList::removeValueAt(int index){
             //if index is first
         else if (index == 0) {
             LinkedNode* ptr = front->getNext();
-            int item = front->getItem();
+            T item = front->getItem();
             delete front;
             front = ptr;
             ptr = nullptr;
@@ -179,7 +184,7 @@ int LinkedList::removeValueAt(int index){
             for (int x = 0; x < index - 1; x++) {
                 before = before->getNext();
             }
-            int item = before->getNext()->getItem();
+            T item = before->getNext()->getItem();
             before->getNext()->setNext(nullptr);
             delete before->getNext();
             before->setNext(after);
@@ -262,6 +267,7 @@ std::string LinkedList::toString(){
 
 }
 
+
 /**
      * finds the largest value in the array
      * @return the first index of the maximum value, or -1 if size < 1
@@ -288,18 +294,19 @@ int LinkedList::findMaxIndex() {
 
 }
 
+template <class T>
 /**
      * Searches an int array for a certain value
      * @return the index of the first occurrence of numToFind if it is present, otherwise returns -1
      */
-int LinkedList::find(int numToFind){
+int LinkedList::find(T valueToFind){
     LinkedNode* ptr = front;
     if(ptr==nullptr){
         return -1;
     }else{
         int x=0;
         while(ptr!=nullptr){
-            if (numToFind == ptr->getItem()){
+            if (valueToFind == ptr->getItem()){
                 return x;
             }else {
                 ptr = ptr->getNext();
@@ -310,11 +317,12 @@ int LinkedList::find(int numToFind){
     }
 }
 
+template <class T>
 /**
      * Searches an int array for a certain value
      * @return the index of the last occurrence of numToFind if it is present, otherwise returns -1
      */
-int LinkedList::findLast(int numToFind){
+int LinkedList::findLast(T numToFind){
     LinkedNode* ptr = front;
     if(ptr == nullptr){
         return -1;
