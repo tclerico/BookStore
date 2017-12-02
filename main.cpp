@@ -1,6 +1,6 @@
 #include <iostream>
 #include "BookStore.h"
-
+#include "LinkedQueue.h"
 
 int main() {
 
@@ -29,6 +29,8 @@ int main() {
     inventory->add("Harry Potter", 4, 2);
 
     std::cout << inventory->printInventory() << std::endl;
+
+    //LinkedQueue* queue = new LinkedQueue(); //i tried to create a linkedqueue but it didnt let me becuase of an error and linkedNode
 
 
     return 0;
