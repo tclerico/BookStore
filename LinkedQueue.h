@@ -8,6 +8,8 @@
 #include <string>
 #include <stdexcept>
 #include "LinkedNode.h"
+#include "Person.h"
+
 
 /**
  * Represents a FIFO data structure (First In First Out). Picture a line
@@ -15,8 +17,8 @@
  */
 class LinkedQueue {
 private:
-    LinkedNode* front;
-    LinkedNode* end;
+    LinkedNode<Person>* front;
+    LinkedNode<Person>* end;
 
 public:
     
@@ -30,16 +32,15 @@ public:
     ~LinkedQueue();
     
     //adds an item to the end of the queue
-    void enqueue(std::string item);
+    void enqueue(Person* item);
 
     //takes an item off the front of the queue and returns it
     //throws out_of_range exception if the queue is empty
-    std::string dequeue();
+    Person dequeue();
 
     //returns true if the queue has no items, false otherwise
     bool isEmpty();
 
 };
 
-#include "LinkedQueue.inl"
 #endif //STACKSANDQUEUES_QUEUE_H
