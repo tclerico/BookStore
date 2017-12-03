@@ -15,6 +15,7 @@ private:
 
     LinkedList* inventory; //linkedList of books
     int numBooks;
+    bool sorted;
 
 
 public:

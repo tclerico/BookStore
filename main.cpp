@@ -58,16 +58,29 @@ void BookTester(Book tb){
 
 
 int main() {
-    /**
+
     std::cout<<"::::::TESTING PERSON CLASS:::::::\n"<<std::endl;
     Person testP = Person("Tim","tclerico@ithaca","354-8976","email");
     PersonTest(testP);
 
-     **/
 
     std::cout<<"\n::::::::TESTING BOOK CLASS:::::::::::\n"<<std::endl;
     Book testBook = Book("The Catcher in The Rye",5,5);
     BookTester(testBook);
+
+
+    std::cout << "------------------" << std::endl;
+    BookStore* inventory = new BookStore();
+
+    inventory->add("Harry Potter", 6, 4);
+    inventory->add("Wuthering Heights", 6, 4);
+    inventory->add("Pride and Prejudice", 6, 4);
+    inventory->add("Gone With The Wind", 6, 4);
+    inventory->add("Les Miserables", 6, 4);
+    inventory->add("Hatchet", 3, 7);
+    inventory->add("Animals", 6, 4);
+    inventory->add("Romeo and Juliet", 6, 4);
+    std::cout << inventory->printInventory() << std::endl;
 
     return 0;
 }

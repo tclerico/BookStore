@@ -83,9 +83,13 @@ void Book::addPerson(std::string name,std::string email, std::string phone,std::
  * @return the person's name
  */
 std::string Book::removePerson(){
-    std::string removed = waitingList->dequeue();
-    numPeopleWaiting-=1;
-    return removed;
+    if (hasWaitingList()) {
+        std::string removed = waitingList->dequeue();
+        numPeopleWaiting -= 1;
+        return removed;
+    } else {
+        return "the queue is empty";
+    }
 }
 
 /**

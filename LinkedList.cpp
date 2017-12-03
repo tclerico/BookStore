@@ -229,3 +229,47 @@ int LinkedList::find(std::string titleToFind){
     }
     return -1;
 }
+
+//Bubble Sort
+void LinkedList::sort(){
+    if (numItems <= 1){
+        return;
+    }
+    bool swapped = true;
+    //While loop checks to see if there were any swaps made in the array
+    while (swapped){
+        swapped = false;
+        Book* previousBook = nullptr;
+        Book* currentBook = front;
+        Book* nextBook = currentBook->getNext();
+        while (nextBook != nullptr && currentBook != nullptr){
+            //swaps two numbers if they are out of order
+            if (currentBook->getName() > nextBook->getName()) {
+                Book* bookAfterNextBook = nextBook->getNext();
+                if (currentBook == front) {
+                    front = nextBook;
+                    currentBook->setNext(bookAfterNextBook);
+                    nextBook->setNext(currentBook);
+                    previousBook = currentBook;
+
+                } else {
+                    previousBook->setNext(nextBook);
+                    nextBook->setNext(currentBook);
+                    currentBook->setNext(bookAfterNextBook);
+                }
+                previousBook = currentBook;
+                currentBook = bookAfterNextBook;
+                if (currentBook == nullptr) {
+                    end = previousBook;
+                } else {
+                    nextBook = currentBook->getNext();
+                }
+                swapped = true;
+            } else {
+                previousBook = currentBook;
+                currentBook = nextBook;
+                nextBook = currentBook->getNext();
+            }
+        }
+    }
+}

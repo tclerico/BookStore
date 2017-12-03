@@ -121,7 +121,13 @@ public:
          */
 //O(n)
         int find(std::string titleToFind);
+
+        /**
+         * Sorts the linked structure
+         */
+        void sort();
     };
+
 
 
 

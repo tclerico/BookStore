@@ -13,6 +13,7 @@ Person::Person(std::string name, std::string email, std::string phone, std::stri
     this->email = email;
     this->phone = phone;
     this->prefer = prefer;
+    this->next = nullptr;
 }
 
 
