@@ -19,6 +19,7 @@ void BookStore::add(std::string title, int have, int want) {
     int bookFound = inventory->find(title);
     if (bookFound == -1) {
         inventory->insertAtFront(bookToAdd);
+        //inventory->insertAt(bookToAdd);
         numBooks++;
         sorted = false;
     } else {

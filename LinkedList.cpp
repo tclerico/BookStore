@@ -100,6 +100,30 @@ void LinkedList::insertAtFront(Book* bookToAdd){
     numItems++;
 }
 
+void LinkedList::insert(Book* bookToAdd) {
+    if (front == nullptr){
+        front = bookToAdd;
+        end = bookToAdd;
+    } else {
+        Book* currentBook = front;
+        Book* previousBook = nullptr;
+        while (currentBook != nullptr && currentBook->getName() < bookToAdd->getName()) {
+            previousBook = currentBook;
+            currentBook = currentBook->getNext();
+        }
+        if (currentBook == front){
+            bookToAdd->setNext(currentBook);
+            front = bookToAdd;
+        } else if (currentBook == nullptr) {
+            previousBook->setNext(bookToAdd);
+            end = bookToAdd;
+        } else {
+            previousBook->setNext(bookToAdd);
+            bookToAdd->setNext(currentBook);
+        }
+    }
+}
+
 //O(n)
 void LinkedList::insertAt(Book* bookToAdd, int index) {
     if (index > numItems || index < 0) {

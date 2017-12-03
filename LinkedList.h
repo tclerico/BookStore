@@ -56,6 +56,8 @@ public:
 //BIG-O: O(1)
         void insertAtFront(Book* bookToAdd);
 
+        void insert(Book* bookToAdd);
+
 /**
  * inserts the item into the list so that it can be found with get(index)
  * @param itemToAdd the item to add
