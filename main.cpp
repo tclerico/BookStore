@@ -3,57 +3,35 @@
 #include "LinkedQueue.h"
 //#include "Person.h"
 
+
+void PersonTest(Person testP){
+
+    std::cout<<"TESTING GETTERS"<<std::endl;
+    std::cout<<"PERSONS NAME: " << testP.getName() << std::endl;
+    std::cout<<"PERSONS EMAIL: "<< testP.getEmail() <<std::endl;
+    std::cout<<"PERSON PHONE #: "<< testP.getPhone() <<std::endl;
+    std::cout<<"PERSONS PREFERENCE: "<<testP.getPref() <<std::endl;
+
+    std::cout<<"\n Testing Setters"<<std::endl;
+    testP.setName("Toby");
+    std::cout<<"NEW NAME Should be Toby: "<<testP.getName()<<std::endl;
+    testP.setEmail("dragon@mail");
+    std::cout<<"NEW EMAIL: "<<testP.getEmail()<<std::endl;
+    testP.setPhone("654-9872");
+    std::cout<<"NEW Phone: "<<testP.getPhone()<<std::endl;
+    testP.setPref("phone");
+    std::cout<<"NEW PREF: "<<testP.getPref()<<std::endl;
+}
+
+
+
 int main() {
-    /**
-    BookStore* inventory = new BookStore();
 
-    inventory->add("Hatchet", 3, 7);
+    std::cout<<"::::::TESTING PERSON CLASS:::::::\n"<<std::endl;
+    Person testP = Person("Tim","tclerico@ithaca","354-8976","email");
+    PersonTest(testP);
 
-    std::cout << inventory->printInventory() << std::endl;
 
-    std::cout << "\n adding new book... \n" << std::endl;
-
-    inventory->add("Of Mice and Men", 6, 4);
-
-    std::cout << inventory->printInventory() << std::endl;
-
-    std::cout << "\n adding existing book... \n" << std::endl;
-
-    inventory->add("Of Mice and Men", 6, 4);
-
-    std::cout << "\n adding more books... \n" << std::endl;
-
-    inventory->add("To Kill a Mockingbird", 2, 5);
-
-    inventory->add("It", 1, 3);
-
-    inventory->add("Harry Potter", 4, 2);
-
-    std::cout << inventory->printInventory() << std::endl;
-
-    //LinkedQueue* queue = new LinkedQueue(); //i tried to create a linkedqueue but it didnt let me becuase of an error and linkedNode
-    **/
-
-    BookStore* inventory = new BookStore();
-    inventory->add("Hatchet", 3, 7);
-
-    std::cout << inventory->printInventory() << std::endl;
-
-    std::cout << "adding new book... \n" << std::endl;
-
-    inventory->add("Of Mice and Men", 6, 4);
-
-    std::cout << inventory->printInventory() << std::endl;
-
-    Book* test = inventory->getBook("Hatchet");
-
-    std::cout<<test->getName()<<std::endl;
-
-    test->addPerson("tim","t@mail","999","phone");
-
-    bool wait = test->hasWaitingList();
-
-    std::cout<<wait<<std::endl;
 
     return 0;
 }
