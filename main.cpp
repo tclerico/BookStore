@@ -1,9 +1,10 @@
 #include <iostream>
 #include "BookStore.h"
 #include "LinkedQueue.h"
+//#include "Person.h"
 
 int main() {
-
+    /**
     BookStore* inventory = new BookStore();
 
     inventory->add("Hatchet", 3, 7);
@@ -31,7 +32,10 @@ int main() {
     std::cout << inventory->printInventory() << std::endl;
 
     //LinkedQueue* queue = new LinkedQueue(); //i tried to create a linkedqueue but it didnt let me becuase of an error and linkedNode
+    **/
 
+    Person* test = new Person("name","email","phone","email");
+    std::cout<<test->getName()<<std::endl;
 
     return 0;
 }

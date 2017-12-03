@@ -33,6 +33,14 @@ std::string Person::getPref(){
     return this->prefer;
 }
 
+Person* Person::getNext(){
+    return next;
+}
+
+void Person::setNext(Person* newNext){
+    next = newNext;
+}
+
 //setters
 void Person::setName(std::string newName){
     this->name = newName;

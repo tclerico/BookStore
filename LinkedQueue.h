@@ -2,12 +2,14 @@
 // Created by Toby Dragon on 10/22/17.
 //
 
+//un-template this and tailor it for person
+
 #ifndef STACKSANDQUEUES_QUEUE_H
 #define STACKSANDQUEUES_QUEUE_H
 
 #include <string>
 #include <stdexcept>
-#include "LinkedNode.h"
+//#include "LinkedNode.h"
 #include "Person.h"
 
 
@@ -17,8 +19,9 @@
  */
 class LinkedQueue {
 private:
-    LinkedNode<Person>* front;
-    LinkedNode<Person>* end;
+    Person* front;
+    Person* end;
+
 
 public:
     
@@ -36,7 +39,7 @@ public:
 
     //takes an item off the front of the queue and returns it
     //throws out_of_range exception if the queue is empty
-    Person dequeue();
+    void dequeue();
 
     //returns true if the queue has no items, false otherwise
     bool isEmpty();

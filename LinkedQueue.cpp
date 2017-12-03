@@ -16,9 +16,9 @@ LinkedQueue::LinkedQueue(){
 LinkedQueue::LinkedQueue(const LinkedQueue& queueToCopy){
     front = nullptr;
     end = nullptr;
-    LinkedNode<Person>* ptr = queueToCopy.front;
+    Person* ptr = queueToCopy.front;
     while(ptr!= nullptr){
-        this->enqueue(ptr->getItem());
+        this->enqueue(ptr);
         ptr = ptr->getNext();
     }
 }
@@ -26,7 +26,7 @@ LinkedQueue::LinkedQueue(const LinkedQueue& queueToCopy){
 //Destructor
 LinkedQueue::~LinkedQueue(){
     while (front != nullptr){
-        LinkedNode<Person>* temp = end;
+        Person* temp = end;
         front = front->getNext();
         delete temp;
     }
@@ -34,16 +34,16 @@ LinkedQueue::~LinkedQueue(){
 
 
 //adds an item to the end of the queue
-void LinkedQueue::enqueue(Person item){
-    LinkedNode<Person>* newNode = new LinkedNode(item);
+void LinkedQueue::enqueue(Person* item){
+    Person* newPerson = new Person(item->getName(),item->getPhone(),item->getEmail(),item->getPref());
     //if front is nullptr, end should be nullptr too
     if (front == nullptr){
-        front = newNode;
-        end = newNode;
+        front = newPerson;
+        end = newPerson;
     }
     else {
-        end->setNext(newNode);
-        end = newNode;
+        end->setNext(newPerson);
+        end = newPerson;
     }
 }
 
@@ -51,7 +51,7 @@ void LinkedQueue::enqueue(Person item){
 //throws out_of_range exception if the queue is empty
 
 
- Person LinkedQueue::dequeue(){
+ void LinkedQueue::dequeue(){
     //TODO, consider cases where:
     // the queue is empty
     // the queue has one item
@@ -59,17 +59,13 @@ void LinkedQueue::enqueue(Person item){
     if (isEmpty()){
         throw std::out_of_range("Error. Out of range.");
     } if (front == end){
-        std::string returnItem = front->getItem();
         delete front;
         front = nullptr;
         end = nullptr;
-        return returnItem;
     } else {
-        LinkedNode<Person>* temp = front;
+        Person* temp = front;
         front = front->getNext();
-        std::string returnItem = temp->getItem();
         delete temp;
-        return returnItem;
     }
 }
 

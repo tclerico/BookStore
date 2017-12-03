@@ -4,6 +4,7 @@
 
 #include "Book.h"
 
+
 /**
  * constructor
  */
@@ -12,7 +13,7 @@ Book::Book(std::string titleIn, int haveIn, int wantIn){
     have = haveIn;
     want = wantIn;
     numPeopleWaiting = 0;
-    //waitingList = new LinkedQueue<Person>; //should waitlist point to the begining of the queue?
+    waitingList = new LinkedQueue(); //should waitlist point to the begining of the queue?
     next = nullptr;
 }
 
@@ -65,16 +66,13 @@ void Book::addBooks(int num){
  * adds param (personToAdd) to LinkedQueue of people
  */
 void Book::addPerson(std::string name,std::string email, std::string phone,std::string prefer){
-    //TODO
-    /*Person personToAdd  = Person(name,email,phone,prefer);
+    Person personToAdd  = Person(name,email,phone,prefer);
     if(waitingList=nullptr){
         waitingList = new LinkedQueue();
-        LinkedNode* newNode = new LinkedNode(personToAdd);
-        waitingList->enqueue(newNode);
+        waitingList->enqueue(&personToAdd);
     }else{
-        LinkedNode* newNode = new LinkedNode(personToAdd);
-        waitingList->enqueue(newNode);
-    }*/
+        waitingList->enqueue(&personToAdd);
+    }
 }
 
 /**

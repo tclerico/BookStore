@@ -4,8 +4,8 @@
 
 #include <string>
 
-#ifndef BOOKSTORE_PERSON_H
-#define BOOKSTORE_PERSON_H
+#ifndef PERSON_H
+#define PERSON_H
 
 #endif //BOOKSTORE_PERSON_H
 
@@ -21,6 +21,8 @@ private:
     std::string phone;
     //persons prefered means of contact.
     std::string prefer;
+
+    Person* next;
 
 public:
 
@@ -38,6 +40,9 @@ public:
     std::string getEmail();
     std::string getPhone();
     std::string getPref();
+
+    Person* getNext();
+    void setNext(Person* newNext);
 
 
 };
