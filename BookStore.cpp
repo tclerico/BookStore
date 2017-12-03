@@ -5,6 +5,7 @@
 
 #include "LinkedList.h"
 #include "BookStore.h"
+
 #include <iostream>
 
 BookStore::BookStore() {
@@ -32,4 +33,16 @@ std::string BookStore::printInventory() {
             return inventory->toString();
         }
     }
+}
+
+//MAKE THIS WORK FOR WHEN THE BOOK ISNT IN THE INVENTORY
+//can you use a throw for that?
+Book* BookStore::getBook(std::string title){
+    for(int x=0; x<numBooks; x++){
+        Book* temp = inventory->getBookAt(x);
+        if(title.compare(temp->getName())==0){
+            return temp;
+        }
+    }
+
 }

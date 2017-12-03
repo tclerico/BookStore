@@ -35,15 +35,15 @@ LinkedQueue::~LinkedQueue(){
 
 //adds an item to the end of the queue
 void LinkedQueue::enqueue(Person* item){
-    Person* newPerson = new Person(item->getName(),item->getPhone(),item->getEmail(),item->getPref());
+    //Person* newPerson = new Person(item->getName(),item->getPhone(),item->getEmail(),item->getPref());
     //if front is nullptr, end should be nullptr too
     if (front == nullptr){
-        front = newPerson;
-        end = newPerson;
+        front = item;
+        end = item;
     }
     else {
-        end->setNext(newPerson);
-        end = newPerson;
+        end->setNext(item);
+        end = item;
     }
 }
 

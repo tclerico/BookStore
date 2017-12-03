@@ -25,6 +25,7 @@ public:
 
     void add(std::string title, int have, int want); //adds books to the inventory, it will prompt the user for the book's info.
 
+    Book* getBook(std::string title);
 
     std::string printInventory();
 

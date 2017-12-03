@@ -67,11 +67,13 @@ void Book::addBooks(int num){
  */
 void Book::addPerson(std::string name,std::string email, std::string phone,std::string prefer){
     Person personToAdd  = Person(name,email,phone,prefer);
-    if(waitingList=nullptr){
+    if(waitingList==nullptr){
         waitingList = new LinkedQueue();
         waitingList->enqueue(&personToAdd);
+        numPeopleWaiting+=1;
     }else{
         waitingList->enqueue(&personToAdd);
+        numPeopleWaiting+=1;
     }
 }
 
@@ -89,7 +91,12 @@ std::string Book::removePerson(){
  * @return true if there is a waiting list
  */
 bool Book::hasWaitingList(){
-    return (numPeopleWaiting == 0);
+    if (numPeopleWaiting == 0){
+        return false;
+    }else{
+        return true;
+    }
+    //return (numPeopleWaiting == 0);
 }
 
 /**

@@ -34,8 +34,26 @@ int main() {
     //LinkedQueue* queue = new LinkedQueue(); //i tried to create a linkedqueue but it didnt let me becuase of an error and linkedNode
     **/
 
-    Person* test = new Person("name","email","phone","email");
+    BookStore* inventory = new BookStore();
+    inventory->add("Hatchet", 3, 7);
+
+    std::cout << inventory->printInventory() << std::endl;
+
+    std::cout << "adding new book... \n" << std::endl;
+
+    inventory->add("Of Mice and Men", 6, 4);
+
+    std::cout << inventory->printInventory() << std::endl;
+
+    Book* test = inventory->getBook("Hatchet");
+
     std::cout<<test->getName()<<std::endl;
+
+    test->addPerson("tim","t@mail","999","phone");
+
+    bool wait = test->hasWaitingList();
+
+    std::cout<<wait<<std::endl;
 
     return 0;
 }
