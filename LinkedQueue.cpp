@@ -51,7 +51,7 @@ void LinkedQueue::enqueue(Person* item){
 //throws out_of_range exception if the queue is empty
 
 
- void LinkedQueue::dequeue(){
+ std::string LinkedQueue::dequeue(){
     //TODO, consider cases where:
     // the queue is empty
     // the queue has one item
@@ -59,13 +59,17 @@ void LinkedQueue::enqueue(Person* item){
     if (isEmpty()){
         throw std::out_of_range("Error. Out of range.");
     } if (front == end){
-        delete front;
-        front = nullptr;
-        end = nullptr;
+         std::string name = front->getName();
+         delete front;
+         front = nullptr;
+         end = nullptr;
+         return name;
     } else {
-        Person* temp = front;
-        front = front->getNext();
-        delete temp;
+         Person* temp = front;
+         front = front->getNext();
+         std::string name = temp->getName();
+         delete temp;
+         return name;
     }
 }
 
