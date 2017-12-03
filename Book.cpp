@@ -68,14 +68,8 @@ void Book::addBooks(int num){
 //this function will need to prompt the user to enter all info about person being added
 void Book::addPerson(std::string name,std::string email, std::string phone,std::string prefer){
     Person* personToAdd  = new Person(name,email,phone,prefer);
-    if(waitingList==nullptr){
-        waitingList = new LinkedQueue();
-        waitingList->enqueue(personToAdd);
-        numPeopleWaiting+=1;
-    }else{
-        waitingList->enqueue(personToAdd);
-        numPeopleWaiting+=1;
-    }
+    waitingList->enqueue(personToAdd);
+    numPeopleWaiting+=1;
 }
 
 /**
