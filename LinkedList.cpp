@@ -4,8 +4,6 @@
 
 
 #include "LinkedList.h"
-#include "Book.h"
-
 
 //O(1)
 LinkedList::LinkedList(){

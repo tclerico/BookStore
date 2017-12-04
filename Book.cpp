@@ -50,6 +50,10 @@ int Book::getWant(){
     return want;
 }
 
+int Book::getNumPeople(){
+    return numPeopleWaiting;
+}
+
 //SETTERS
 
 

@@ -28,7 +28,7 @@ public:
 
     Book* getBook(std::string title);
 
-    std::string printInventory();
+    std::string list();
 
 
 };

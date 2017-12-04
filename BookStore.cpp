@@ -28,7 +28,7 @@ void BookStore::add(std::string title, int have, int want) {
     }
 }
 
-std::string BookStore::printInventory() {
+std::string BookStore::list() {
     if (numBooks == 0){
         return "Our Inventory is empty.";
     } else {

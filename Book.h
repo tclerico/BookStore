@@ -50,6 +50,12 @@ public:
     int getWant();
 
     /**
+     * gets the number of people waiting
+     * @return num people waiting
+     */
+    int getNumPeople();
+
+    /**
      * adds param (num) to books have value
      */
     void addBooks(int num);
