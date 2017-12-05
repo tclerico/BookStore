@@ -52,3 +52,37 @@ Book* BookStore::getBook(std::string title){
         return nullptr;
     }
 }
+
+
+void BookStore::sell(std::string title){
+
+
+    //we have to create a UI this is how we'll sell books
+
+    Book* bookToSell = getBook(title);
+
+    if(bookToSell != nullptr && bookToSell->getHave() > 0){
+
+        std::string response;
+        std::cout<<"Would You like to buy " + bookToSell->getName() + " Y/N:    "<<std::endl;
+        std::cin >> response;
+        try{
+            if(response == "Y" ){
+                bookToSell->sell();
+                std::cout<<"Thanks for your purchase"<<std::endl;
+            }else if(response == "N"){
+                std::cout<<"Thanks for your interest"<<std::endl;
+            }else {
+                //throw
+            }
+        }catch (std::invalid_argument exception){
+                //after the exception being caught, recall function sell(title)
+        }
+    } else{
+
+        std::cout<<"Not Available";
+
+    }
+
+
+}

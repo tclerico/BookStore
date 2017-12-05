@@ -118,3 +118,7 @@ Book* Book::getNext(){
 void Book::setNext(Book* newNext){
     next = newNext;
 }
+
+void Book::sell(){
+    have = have -1;
+}

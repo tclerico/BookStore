@@ -87,6 +87,11 @@ public:
 
     void setNext(Book* newNext);
 
+    /**
+     * removes one book
+     */
+    void sell();
+
 };
 
 

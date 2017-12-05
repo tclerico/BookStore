@@ -29,6 +29,8 @@ public:
 
     std::string list();
 
+    void sell(std::string title);
+
 
 };
 

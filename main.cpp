@@ -135,6 +135,15 @@ int main() {
     BookStore* inventory = new BookStore();
     bookStoreTester(inventory);
 
+    std::cout<<"Sell testing"<<std::endl;
+    inventory->sell("Gone With The Wind");
+
+    Book* book = inventory->getBook("Gone With The Wind");
+
+    if(book->getHave() == 5){
+        std::cout<<"Passed: book sold";
+    }
+
 
 
     return 0;
