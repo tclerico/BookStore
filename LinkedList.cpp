@@ -65,12 +65,7 @@ LinkedList& LinkedList::operator=(const LinkedList& linkedListToCopy){
 //O(n)
 LinkedList::~LinkedList() {
     //TODO
-    /*LinkedNode* current = front;
-    while (current != nullptr){
-        LinkedNode* toDelete = current;
-        current = current->getNext();
-        delete toDelete;
-    }*/
+    clearList();
 }
 
 

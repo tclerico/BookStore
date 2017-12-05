@@ -15,7 +15,7 @@ private:
     std::string title;
     int have;
     int want;
-    LinkedQueue* waitingList;
+    Queue* waitingList;
     int numPeopleWaiting;
     Book* next;
 

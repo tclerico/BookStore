@@ -12,8 +12,7 @@ class BookStore {
 
 
 private:
-
-    LinkedList* inventory; //linkedList of books
+    Inventory* inventory; //linkedList of books
     int numBooks;
     bool sorted;
 

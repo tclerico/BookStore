@@ -8,13 +8,13 @@
 #include <string>
 #include <stdexcept>
 #include "Book.h"
-
+#include "Inventory.h"
     /** this was directly stolen from intLinkedList and some things will need to be changed
      * might be a good idea to template this for use in the inventory/waitlist
      */
 
 
-class LinkedList {
+class LinkedList : public Inventory {
 
 
 private:
