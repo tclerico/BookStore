@@ -7,7 +7,6 @@
 #ifndef PERSON_H
 #define PERSON_H
 
-#endif //BOOKSTORE_PERSON_H
 
 class Person{
 
@@ -48,8 +47,4 @@ public:
 };
 
 
-
-
-
-
-
+#endif //BOOKSTORE_PERSON_H

@@ -9,7 +9,7 @@
 
 #include <string>
 #include <stdexcept>
-//#include "LinkedNode.h"
+#include "Queue.h"
 #include "Person.h"
 
 
@@ -17,7 +17,7 @@
  * Represents a FIFO data structure (First In First Out). Picture a line
  * to wait for something (first person in is the first person out)
  */
-class LinkedQueue {
+class LinkedQueue : public Queue{
 private:
     Person* front;
     Person* end;

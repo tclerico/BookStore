@@ -40,14 +40,6 @@ public:
     LinkedList &operator=(const LinkedList &toCopy);
 
 /**
- * appends the new item to the end of the list
- * @param itemToAdd the item to add to the end of the array
- * @post the list has an additional value in it, at the end
- */
-//BIG-O: O(1)
-        void insertAtEnd(Book* bookToAdd);
-
-/**
  * appends the new item to the beginning of the list
  * @param itemToAdd the item to add to the beginning of the list
  * @post the list has an additional value in it, at the beginning
@@ -57,17 +49,6 @@ public:
         void insertAtFront(Book* bookToAdd);
 
         void insert(Book* bookToAdd);
-
-/**
- * inserts the item into the list so that it can be found with get(index)
- * @param itemToAdd the item to add
- * @param index the location in which to insert this item
- * @post the list has an additional value in it at the specified index,
- *        all further values have been shifted down by one index
- * @throws out_of_range exception if index is invalid (< 0 or >currItemCount)
- */
-//BIG-O: O(N)
-        void insertAt(Book* bookToAdd, int index);
 
 /**
  * gets a value from the list

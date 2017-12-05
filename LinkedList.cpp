@@ -75,18 +75,6 @@ LinkedList::~LinkedList() {
 
 
 //O(1)
-void LinkedList::insertAtEnd(Book* bookToAdd){
-    if (front == nullptr){
-        front = bookToAdd;
-        end = bookToAdd;
-    } else {
-        end->setNext(bookToAdd);
-        end = bookToAdd;
-    }
-    numItems++;
-}
-
-//O(1)
 void LinkedList::insertAtFront(Book* bookToAdd){
     if (front == nullptr){
         front = bookToAdd;
@@ -119,28 +107,6 @@ void LinkedList::insert(Book* bookToAdd) {
             previousBook->setNext(bookToAdd);
             bookToAdd->setNext(currentBook);
         }
-    }
-}
-
-//O(n)
-void LinkedList::insertAt(Book* bookToAdd, int index) {
-    if (index > numItems || index < 0) {
-        throw std::out_of_range("Index out of range.");
-    } else if (index == 0) {
-        insertAtFront(bookToAdd);
-    } else if (index == numItems) {
-        insertAtEnd(bookToAdd);
-    } else {
-        int count = 0;
-        Book* current = front;
-        while (count != index - 1) {
-            current = current->getNext();
-            count++;
-        }
-        Book* nextBook = current->getNext();
-        current->setNext(bookToAdd);
-        bookToAdd->setNext(nextBook);
-        numItems++;
     }
 }
 
