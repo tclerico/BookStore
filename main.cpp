@@ -141,7 +141,7 @@ int main() {
     Book* book = inventory->getBook("Gone With The Wind");
 
     if(book->getHave() == 5){
-        std::cout<<"Passed: book sold";
+        std::cout<<"Passed: book sold ";
     }
 
 
