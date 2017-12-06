@@ -5,7 +5,8 @@
 
 #include "LinkedList.h"
 #include "BookStore.h"
-
+#include <fstream>
+#include <cstdlib>
 #include <iostream>
 
 BookStore::BookStore() {
@@ -107,6 +108,47 @@ void BookStore::sell(std::string title){
     }
 
 
+}
+
+void BookStore::readInventory() {
+    ifstream inf("books.rtf");
+
+    if (!inf){
+        std::cout << "Error. Could not find data." << std::endl;
+        exit(1);
+    }
+    while (inf){
+        std::string title;
+        std::string want;
+        std::string have;
+        std::string waiting;
+        getline(inf, title);
+        getline(inf, want);
+        getline(inf, have);
+        getline(inf, waiting);
+        add(title, std::stoi(want), std::stoi(have));
+        if (waiting == "yes"){
+            //TODO
+            std::string numWaiting;
+            getline(inf, numWaiting);
+            int numPeople = std::stoi(numWaiting);
+            for (int i = 0; i < numPeople; i++){
+                std::string name;
+                std::string phone;
+                std::string email;
+                std::string prefer;
+                getline(inf, name);
+                getline(inf, phone);
+                getline(inf, email);
+                getline(inf, prefer);
+                getBook(title)->addPerson(name, email, phone, prefer);
+            }
+        }
+
+
+
+
+    }
 }
 
 //prints out all information about given title
