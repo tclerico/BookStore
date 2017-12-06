@@ -31,6 +31,7 @@ public:
 
     void sell(std::string title);
 
+    void inquire(std::string title);
 
 };
 

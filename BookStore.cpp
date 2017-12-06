@@ -94,7 +94,7 @@ void BookStore::sell(std::string title){
         std::string pref;
         std::cout<<"Enter the customer's name: ";
         std::cin >> name;
-        std::cout<<"Enter teh customer's email: ";
+        std::cout<<"Enter the customer's email: ";
         std::cin >> email;
         std::cout<<"Enter the customer's phone number: ";
         std::cin >> phone;
@@ -108,3 +108,15 @@ void BookStore::sell(std::string title){
 
 
 }
+
+//prints out all information about given title
+void BookStore::inquire(std::string title){
+    Book* inquiry = getBook(title);
+    if(inquiry!=nullptr){
+        std::cout<<inquiry->toString()<<std::endl;
+    }else{
+        std::cout<<"Title Does Not Exist"<<std::endl;
+    }
+
+}
+
