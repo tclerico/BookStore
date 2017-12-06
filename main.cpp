@@ -119,7 +119,7 @@ void bookStoreTester(BookStore* store) {
 
 int main() {
 
-    std::cout<<"::::::TESTING PERSON CLASS:::::::\n"<<std::endl;
+    /*std::cout<<"::::::TESTING PERSON CLASS:::::::\n"<<std::endl;
     Person* testP = new     Person("Tim","tclerico@ithaca","354-8976","email");
     PersonTest(testP);
 
@@ -151,7 +151,13 @@ int main() {
     std::cout<< test->toString() << std::endl;
     std::cout<<"new title waitlist: " << test->hasWaitingList()<<std::endl;
 
+*/
 
+    BookStore* store = new BookStore();
+
+    store->readInventory();
+
+    store->list();
 
     return 0;
 }
