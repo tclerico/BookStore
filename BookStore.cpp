@@ -111,7 +111,7 @@ void BookStore::sell(std::string title){
 }
 
 void BookStore::readInventory() {
-    ifstream inf("books.rtf");
+    ifstream inf("books.txt");
 
     if (!inf){
         std::cout << "Error. Could not find data." << std::endl;
