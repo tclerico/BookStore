@@ -144,6 +144,13 @@ int main() {
         std::cout<<"Passed: book sold";
     }
 
+    inventory->sell("This Book Doesnt Exist");
+
+    Book* test = inventory->getBook("This Book Doesnt Exist");
+
+    std::cout<< test->toString() << std::endl;
+    std::cout<<"new title waitlist: " << test->hasWaitingList()<<std::endl;
+
 
 
     return 0;
