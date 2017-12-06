@@ -151,6 +151,16 @@ void BookStore::readInventory() {
     }
 }
 
+void BookStore::outputInventory() {
+    ofstream outf("books.txt");
+
+    if (!outf){
+        std::cout << "Error. Could not find data." << std::endl;
+        exit(1);
+    }
+    //TODO
+}
+
 //prints out all information about given title
 void BookStore::inquire(std::string title){
     Book* inquiry = getBook(title);
