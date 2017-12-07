@@ -172,6 +172,20 @@ void BookStore::inquire(std::string title){
 
 }
 
+void BookStore::help(){
+
+    std::cout<<"H  - Provides a summary of all available commands"<<std::endl;
+    std::cout<<"I  - Displays all information for a specified tittle"<<std::endl;
+    std::cout<<"L  -List information for the entire inventory alphabetically"<<std::endl;
+    std::cout<<"A  -Add a book to the inventory"<<std::endl;
+    std::cout<<"M  -Modify the want value for the specified tittle"<<std::endl;
+    std::cout<<"S  -Sell book"<<std::endl;
+    std::cout<<"O  -Order books based on a file"<<std::endl;
+    std::cout<<"D  -Delivery, updates books based on a file"<<std::endl;
+    std::cout<<"R  -Return books"<<std::endl;
+    std::cout<<"Q  -Quit  "<<std::endl;
+}
+
 void BookStore::run(){
     //Call readinventory function
 
@@ -182,7 +196,7 @@ void BookStore::run(){
         std::cin >> ui;
         if(ui == "H"){
             //TODO
-            //help function
+            help();
         }
         else if(ui == "I"){
             std::string title;

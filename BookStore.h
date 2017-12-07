@@ -39,6 +39,8 @@ public:
 
     void run();
 
+    void help();
+
 };
 
 
