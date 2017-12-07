@@ -111,36 +111,36 @@ void BookStore::sell(std::string title){
 }
 
 void BookStore::readInventory() {
-    std::ifstream inf("books.txt");
+    std::ifstream myFile("/Users/dshane/Documents/Dylan\\ Homework/COLLEGE/Junior\\ Year/Comp220/Project/BookStore/books.txt");
 
-    if (!inf){
+    /*if (!myFile){
         std::cout << "Error. Could not find data." << std::endl;
         exit(1);
-    }
-    while (inf){
+    }*/
+    while (myFile.is_open()){
         std::string title;
         std::string want;
         std::string have;
         std::string waiting;
-        getline(inf, title);
-        getline(inf, want);
-        getline(inf, have);
-        getline(inf, waiting);
+        getline(myFile, title);
+        getline(myFile, want);
+        getline(myFile, have);
+        getline(myFile, waiting);
         add(title, std::stoi(want), std::stoi(have));
         if (waiting == "yes"){
             //TODO
             std::string numWaiting;
-            getline(inf, numWaiting);
+            getline(myFile, numWaiting);
             int numPeople = std::stoi(numWaiting);
             for (int i = 0; i < numPeople; i++){
                 std::string name;
                 std::string phone;
                 std::string email;
                 std::string prefer;
-                getline(inf, name);
-                getline(inf, phone);
-                getline(inf, email);
-                getline(inf, prefer);
+                getline(myFile, name);
+                getline(myFile, phone);
+                getline(myFile, email);
+                getline(myFile, prefer);
                 getBook(title)->addPerson(name, email, phone, prefer);
             }
         }
@@ -186,7 +186,27 @@ void BookStore::help(){
     std::cout<<"Q  -Quit  "<<std::endl;
 }
 
-void BookStore::run(){
+void modify(std::string title){
+    //TODO
+}
+
+void sell(std::string title){
+    //TODO
+}
+
+void order(){
+    //TODO
+}
+
+void delivery(){
+    //TODO
+}
+
+void returnBooks(){
+    //TODO
+}
+
+/*void BookStore::run(){
     //Call readinventory function
 
     bool close;
@@ -243,5 +263,5 @@ void BookStore::run(){
 
 
     }
-}
+}*/
 
