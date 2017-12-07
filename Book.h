@@ -92,6 +92,9 @@ public:
      */
     void sell();
 
+    void setWant(int nwant);
+
+    void setHave(int nhave);
 };
 
 

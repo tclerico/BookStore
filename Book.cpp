@@ -122,3 +122,11 @@ void Book::setNext(Book* newNext){
 void Book::sell(){
     have = have -1;
 }
+
+void Book::setWant(int nwant){
+    want = nwant;
+}
+
+void Book::setHave(int nhave){
+    have = nhave;
+}

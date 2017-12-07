@@ -37,6 +37,8 @@ public:
 
     void inquire(std::string title);
 
+    void run();
+
 };
 
 

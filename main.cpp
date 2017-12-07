@@ -151,13 +151,13 @@ int main() {
     std::cout<< test->toString() << std::endl;
     std::cout<<"new title waitlist: " << test->hasWaitingList()<<std::endl;
 
-*/
 
     BookStore* store = new BookStore();
 
     store->readInventory();
 
     store->list();
+     */
 
     return 0;
 }
