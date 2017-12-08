@@ -4,10 +4,47 @@
 
 #include "BookStore.h"
 #include <iostream>
+#include <fstream>
+using namespace std;
 
-void run(){
+BookStore* buildStore(){
 
-    BookStore* store = new BookStore();
+    ifstream ifs( "books.txt", ios::in );       // note no mode needed
+    if ( ! ifs.is_open() ) {
+        cout <<" Failed to open" << endl;
+    }
+    else {
+        cout <<"Opened OK" << endl;
+    }
+
+    BookStore* inventory = new BookStore();
+    int count = 0;
+    Book* toAdd;
+    while (ifs)
+    {
+        // read stuff from the file into a string and print it
+        std::string strInput;
+        getline(ifs,strInput);
+        if(count%3 == 0){
+            toAdd = new Book(strInput,0,0);
+        }
+        else if(count%2 == 0){
+            toAdd->setHave(std::stoi(strInput));
+        }
+        else{
+            toAdd->setWant(std::stoi(strInput));
+        }
+        //cout << strInput << endl;
+    }
+    return inventory;
+}
+
+
+
+void run(BookStore* store){
+
+    //think we should make the BookStore costructor use on file io
+    //BookStore* store = new BookStore();
     store->readInventory();
 
     bool close;
@@ -101,5 +138,6 @@ void run(){
 }
 
 int main(){
-    run();
+    BookStore* nStore = buildStore();
+    run(nStore);
 }
