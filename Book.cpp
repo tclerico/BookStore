@@ -80,13 +80,13 @@ void Book::addPerson(std::string name,std::string email, std::string phone,std::
  * removes the first person in the queue waiting for the book
  * @return the person's name
  */
-std::string Book::removePerson(){
+Person* Book::removePerson(){
     if (hasWaitingList()) {
-        std::string removed = waitingList->dequeue();
-        numPeopleWaiting -= 1;
-        return removed;
+        Person* removedPerson = waitingList->dequeue();
+        numPeopleWaiting--;
+        return removedPerson;
     } else {
-        return "the queue is empty";
+        return nullptr;
     }
 }
 
@@ -108,7 +108,7 @@ bool Book::hasWaitingList(){
  * @return string of book information
  */
 std::string Book::toString(){
-    return title + " have: " + std::to_string(have) + " want: " + std::to_string(want) + " " + std::to_string(numPeopleWaiting) + " people waiting.";
+    return title + " // have: " + std::to_string(have) + " // want: " + std::to_string(want) + " // " + std::to_string(numPeopleWaiting) + " people waiting.";
 }
 
 Book* Book::getNext(){

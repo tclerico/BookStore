@@ -171,6 +171,26 @@ void BookStore::outputInventory() {
         std::cout << "Error. Could not find data." << std::endl;
         exit(1);
     }
+
+    for (int i = 0; i < inventory->itemCount(); i++) {
+        Book *book = inventory->getBookAt(i);
+        if (book->getWant() > 0) {
+            outf << book->getName() << std::endl;
+            outf << book->getHave() << std::endl;
+            outf << book->getWant() << std::endl;
+            if (book->hasWaitingList()) {
+                outf << "yes"<< std::endl;;
+                Person *person = book->removePerson();
+                outf << person->getName() << std::endl;
+                outf << person->getPhone() << std::endl;
+                outf << person->getEmail() << std::endl;
+                outf << person->getPref() << std::endl;
+
+            } else {
+                outf << "no" << std::endl;
+            }
+        }
+    }
     //TODO
 }
 
@@ -199,7 +219,7 @@ void BookStore::help(){
     std::cout<<"Q  - Quit  \n"<<std::endl;
 }
 
-void modify(std::string title){
+void BookStore::modify(std::string title){
     //TODO
 }
 

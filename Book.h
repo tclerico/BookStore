@@ -69,7 +69,7 @@ public:
      * removes the first person in the queue waiting for the book
      * @return the person's name
      */
-    std::string removePerson();
+    Person* removePerson();
 
     /**
      * checks if there is a waiting list

@@ -15,7 +15,7 @@ public:
 
     //takes an item off the front of the queue and returns it
     //throws out_of_range exception if the queue is empty
-    virtual std::string dequeue()=0;
+    virtual Person* dequeue()=0;
 
     //returns true if the queue has no items, false otherwise
     virtual bool isEmpty()=0;

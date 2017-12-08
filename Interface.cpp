@@ -12,10 +12,10 @@ int countLines(){
     ifstream ifs( "books.txt", ios::in );       // note no mode needed
     if ( ! ifs.is_open() ) {
         cout <<" Failed to open" << endl;
-    }
+    }/*
     else {
         cout <<"Opened OK" << endl;
-    }
+    }*/
 
     int number_of_lines = 0;
     std::string line;
@@ -37,10 +37,10 @@ BookStore* buildStore(){
     ifstream ifs( "books.txt", ios::in );       // note no mode needed
     if ( ! ifs.is_open() ) {
         cout <<" Failed to open" << endl;
-    }
+    }/*
     else {
         cout <<"Opened OK" << endl;
-    }
+    }*/
     //std::cout << "Number of lines in text file: " << number_of_lines;
 
 
@@ -50,7 +50,7 @@ BookStore* buildStore(){
         std::string name;
         std::getline(ifs,name);
         int len = name.length();
-        name.erase(len-1,len);
+        //name.erase(len-1,len);
         std::string have;
         std::getline(ifs,have);
         std::string want;
@@ -80,7 +80,7 @@ void run(BookStore* store){
     //think we should make the BookStore costructor use on file io
     //BookStore* store = new BookStore();
    // store->readInventory();
-
+    std::cout<<"Welcome to the Book Store\n" << std::endl;
     bool close = false;
     while(!close){
         std::string userInput;
@@ -108,7 +108,7 @@ void run(BookStore* store){
             std::cin >>  title;
             std::cout<<"Enter the Have value: ";
             std::cin >> have;
-            std::cout<<"Enter the Want value:";
+            std::cout<<"Enter the Want value: ";
             std::cin >> want;
 
 
@@ -125,7 +125,7 @@ void run(BookStore* store){
             int want = store->getBook(title)->getWant();
             int have = store->getBook(title)->getHave();
 
-            std::cout<<"Current Want: " << want << " Current Have: "<<have<<std::endl;
+            std::cout<<"Current Have: " << have << " Current Want: "<<want<<std::endl;
             std::cout<<"Enter New Want Value: ";
             int newWant;
             std::cin>>newWant;
@@ -165,6 +165,7 @@ void run(BookStore* store){
             store->outputInventory();
             std::cout << "Thank you for visiting our Bookstore." << std::endl;
             close = true;
+
         } else {
             std::cout << "Invalid Command." << std::endl;
         }
