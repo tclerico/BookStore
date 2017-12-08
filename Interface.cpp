@@ -13,7 +13,7 @@ void run(){
     bool close;
     while(!close){
         std::string userInput;
-        std::cout<<"Enter A Command or 'H' For Help: "<<std::endl;
+        std::cout<<"Enter a Command or 'H' For Help: "<<std::endl;
         std::cin >> userInput;
         if(userInput == "H"){
             //TODO
@@ -59,9 +59,26 @@ void run(){
 
             store->getBook(in)->setWant(nwant);
         } else if (userInput == "S"){
-
-            store->sell(); //calls function sell, function sells does all the job
-
+            std::string title;
+            std::cout<<"Enter the Title of the Book: "<<std::endl;
+            std::cin>>title;
+            bool sold = store->sell(title); //calls function sell, function sells does all the job
+            if (!sold){
+                std::cout<<"We're currently out of stock with that book. Let's add you to the waiting list."<<std::endl;
+                std::string name;
+                std::string phone;
+                std::string email;
+                std::string pref;
+                std::cout<<"Enter the customer's name: ";
+                std::cin >> name;
+                std::cout<<"Enter the customer's email: ";
+                std::cin >> email;
+                std::cout<<"Enter the customer's phone number: ";
+                std::cin >> phone;
+                std::cout<<"Enter customer's prefered means of contact: ";
+                std::cin >> pref;
+                store->getBook(title)->addPerson(name, email, phone, pref);
+            }
         } else if (userInput == "O"){
             //TODO Order
         } else if (userInput == "D"){

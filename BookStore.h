@@ -35,7 +35,7 @@ public:
 
     void modify(std::string title);
 
-    void sell();
+    bool sell(std::string title);
 
     void addToWaitingList();
 

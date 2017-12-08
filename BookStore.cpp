@@ -55,10 +55,19 @@ Book* BookStore::getBook(std::string title){
 }
 
 
-void BookStore::sell(){
+bool BookStore::sell(std::string title){
 
+    if (inventory->find(title) == -1){
+        return false;
+    } else if (getBook(title)->getHave() > 0){
+        getBook(title)->sell();
+        return true;
+    } else {
+        return false;
+    }
+}
 
-    //we have to create a UI this is how we'll sell books
+    /*//we have to create a UI this is how we'll sell books
     std::string title;
     std::cout<<"Enter title book: "<<std::endl;
     std::cin>>title;
@@ -117,7 +126,7 @@ void BookStore::sell(){
     }
 
 
-}
+}*/
 
 void BookStore::readInventory() {
     std::ifstream myFile("/Users/dshane/Documents/Dylan\\ Homework/COLLEGE/Junior\\ Year/Comp220/Project/BookStore/books.txt");
@@ -185,14 +194,14 @@ void BookStore::help(){
 
     std::cout<<"H  - Provides a summary of all available commands"<<std::endl;
     std::cout<<"I  - Displays all information for a specified tittle"<<std::endl;
-    std::cout<<"L  -List information for the entire inventory alphabetically"<<std::endl;
-    std::cout<<"A  -Add a book to the inventory"<<std::endl;
-    std::cout<<"M  -Modify the want value for the specified tittle"<<std::endl;
-    std::cout<<"S  -Sell book"<<std::endl;
-    std::cout<<"O  -Order books based on a file"<<std::endl;
-    std::cout<<"D  -Delivery, updates books based on a file"<<std::endl;
-    std::cout<<"R  -Return books"<<std::endl;
-    std::cout<<"Q  -Quit  "<<std::endl;
+    std::cout<<"L  - List information for the entire inventory alphabetically"<<std::endl;
+    std::cout<<"A  - Add a book to the inventory"<<std::endl;
+    std::cout<<"M  - Modify the want value for the specified tittle"<<std::endl;
+    std::cout<<"S  - Sell book"<<std::endl;
+    std::cout<<"O  - Order books based on a file"<<std::endl;
+    std::cout<<"D  - Delivery, updates books based on a file"<<std::endl;
+    std::cout<<"R  - Return books"<<std::endl;
+    std::cout<<"Q  - Quit  "<<std::endl;
 }
 
 void modify(std::string title){
