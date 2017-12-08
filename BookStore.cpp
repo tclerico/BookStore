@@ -56,10 +56,8 @@ Book* BookStore::getBook(std::string title){
 
 
 bool BookStore::sell(std::string title){
-
-    if (inventory->find(title) == -1){
-        return false;
-    } else if (getBook(title)->getHave() > 0){
+    Book* bookToSell = getBook(title);
+    if (bookToSell != nullptr && bookToSell->getHave() > 0){
         getBook(title)->sell();
         return true;
     } else {
@@ -162,10 +160,6 @@ void BookStore::readInventory() {
                 getBook(title)->addPerson(name, email, phone, prefer);
             }
         }
-
-
-
-
     }
 }
 
@@ -208,10 +202,6 @@ void modify(std::string title){
     //TODO
 }
 
-void sell(std::string title){
-    //TODO
-}
-
 void order(){
     //TODO
 }
@@ -224,62 +214,4 @@ void returnBooks(){
     //TODO
 }
 
-/*void BookStore::run(){
-    //Call readinventory function
-
-    bool close;
-    while(!close){
-        std::string ui;
-        std::cout<<"Enter A Command or 'H' For Help: "<<std::endl;
-        std::cin >> ui;
-        if(ui == "H"){
-            //TODO
-            help();
-        }
-        else if(ui == "I"){
-            std::string title;
-            std::cout<<"Please Enter The Book Title: ";
-            std::cin >> title;
-            inquire(title);
-        }
-        else if(ui == "L"){
-            list();
-        }
-        else if(ui.find_first_of("A") == 0){
-            std::string in = ui;
-            in.erase(0,3);
-            int len = in.length();
-            in.erase(len-1,len);
-            int want;
-            int have;
-
-            std::cout<<"Enter the Have value: "<<std::endl;
-            std::cin>>have;
-            std::cout<<"Enter the Want value:"<<std::endl;
-            std::cin>>want;
-
-            add(in,have,want);
-
-        }
-        else if(ui.find_first_of("M") == 0){
-            std::string in = ui;
-            in.erase(0,3);
-            int len = in.length();
-            in.erase(len-1,len);
-
-            int want = getBook(in)->getWant();
-            int have = getBook(in)->getHave();
-
-            std::cout<<"Current Want: " << want << " Current Have: "<<have<<std::endl;
-            std::cout<<"Enter New Want Value: "<<std::endl;
-            int nwant;
-            std::cin>>nwant;
-
-            getBook(in)->setWant(nwant);
-        }
-
-
-
-    }
-}*/
 
