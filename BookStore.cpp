@@ -16,13 +16,13 @@ BookStore::BookStore() {
 }
 
 void BookStore::add(std::string title, int have, int want) {
+    Book* bookToAdd = new Book(title, have, want);
     int bookFound = inventory->find(title);
     if (bookFound == -1) {
-        Book* bookToAdd = new Book(title, have, want);
-        inventory->insert(bookToAdd);
+        inventory->insertAtFront(bookToAdd);
         //inventory->insertAt(bookToAdd);
         numBooks++;
-        //sorted = false;
+        sorted = false;
     } else {
         std::cout << "That book already exists." << std::endl;
         std::cout << inventory->getBookAt(bookFound)->toString() << std::endl;

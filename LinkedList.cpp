@@ -103,11 +103,12 @@ void LinkedList::insert(Book* bookToAdd) {
             bookToAdd->setNext(currentBook);
         }
     }
+    numItems++;
 }
 
 //O(n)
 Book* LinkedList::getBookAt(int index){
-    if (index > numItems - 1 || index < 0){
+    if (index > numItems-1 || index < 0){
         throw std::out_of_range("<Your error message here>");
     } else {
         int currentIdx = 0;
@@ -188,7 +189,7 @@ std::string LinkedList::toString(){
         return "Our inventory is empty.";
     }
     Book* currentBook = front;
-    std::string returnString = "";
+    std::string returnString = "\nINVENTORY:\n";
     while (currentBook != nullptr){
         returnString += currentBook->toString() + "\n";
         currentBook = currentBook->getNext();
