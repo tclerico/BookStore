@@ -46,7 +46,7 @@ BookStore* buildStore(){
 
     BookStore* items = new BookStore();
     //Book* toAdd;
-    for(int x=0;x<numLines;x+=3){
+    for(int x=0;x<numLines;x+=4){
         std::string name;
         std::getline(ifs,name);
         std::string have;
@@ -54,6 +54,18 @@ BookStore* buildStore(){
         std::string want;
         std::getline(ifs,want);
         items->add(name,std::stoi(have),std::stoi(want));
+        std::string waitingList;
+        std::getline(ifs, waitingList);
+        if (waitingList == "yes"){
+            std::string personName;
+            getline(ifs, personName);
+            std::string personPhone;
+            getline(ifs, personPhone);
+            std::string personEmail;
+            getline(ifs, personEmail);
+            std::string personPref;
+            getline(ifs, personPref);
+        }
     }
     ifs.close();
     return items;
@@ -65,7 +77,7 @@ void run(BookStore* store){
 
     //think we should make the BookStore costructor use on file io
     //BookStore* store = new BookStore();
-    store->readInventory();
+   // store->readInventory();
 
     bool close = false;
     while(!close){
@@ -87,17 +99,19 @@ void run(BookStore* store){
         }
         else if(userInput == "A"){
             std::string title;
-            int want;
-            int have;
+            std::string want;
+            std::string have;
 
             std::cout<<"Enter the Title of the Book: ";
-            std::cin>>title;
+            std::cin >>  title;
             std::cout<<"Enter the Have value: ";
-            std::cin>>have;
+            std::cin >> have;
             std::cout<<"Enter the Want value:";
-            std::cin>>want;
+            std::cin >> want;
 
-            store->add(title,have,want);
+
+
+            store->add(title,std::stoi(have),std::stoi(want));
 
         }
         else if(userInput == "M"){

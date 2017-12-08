@@ -128,13 +128,13 @@ bool BookStore::sell(std::string title){
 }*/
 
 void BookStore::readInventory() {
-    std::ifstream myFile("/Users/dshane/Documents/Dylan\\ Homework/COLLEGE/Junior\\ Year/Comp220/Project/BookStore/books.txt");
+    std::ifstream myFile("books.txt");
 
     /*if (!myFile){
         std::cout << "Error. Could not find data." << std::endl;
         exit(1);
     }*/
-    while (myFile.is_open()){
+    while (myFile){
         std::string title;
         std::string want;
         std::string have;
