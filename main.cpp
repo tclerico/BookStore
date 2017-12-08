@@ -1,6 +1,11 @@
 #include <iostream>
 #include "BookStore.h"
 #include "LinkedQueue.h"
+
+#include <fstream>
+#include <string>
+#include <cstdlib> // for exit()
+
 //#include "Person.h"
 
 
