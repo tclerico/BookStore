@@ -49,6 +49,8 @@ BookStore* buildStore(){
     for(int x=0;x<numLines;x+=4){
         std::string name;
         std::getline(ifs,name);
+        int len = name.length();
+        name.erase(len-1,len);
         std::string have;
         std::getline(ifs,have);
         std::string want;

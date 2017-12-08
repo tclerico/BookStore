@@ -16,9 +16,9 @@ BookStore::BookStore() {
 }
 
 void BookStore::add(std::string title, int have, int want) {
-    Book* bookToAdd = new Book(title, have, want);
     int bookFound = inventory->find(title);
     if (bookFound == -1) {
+        Book* bookToAdd = new Book(title, have, want);
         inventory->insertAtFront(bookToAdd);
         //inventory->insertAt(bookToAdd);
         numBooks++;
