@@ -7,8 +7,8 @@
 #include <fstream>
 using namespace std;
 
-BookStore* buildStore(){
 
+int countLines(){
     ifstream ifs( "books.txt", ios::in );       // note no mode needed
     if ( ! ifs.is_open() ) {
         cout <<" Failed to open" << endl;
@@ -17,26 +17,46 @@ BookStore* buildStore(){
         cout <<"Opened OK" << endl;
     }
 
-    BookStore* inventory = new BookStore();
-    int count = 0;
-    Book* toAdd;
-    while (ifs)
-    {
-        // read stuff from the file into a string and print it
-        std::string strInput;
-        getline(ifs,strInput);
-        if(count%3 == 0){
-            toAdd = new Book(strInput,0,0);
-        }
-        else if(count%2 == 0){
-            toAdd->setHave(std::stoi(strInput));
-        }
-        else{
-            toAdd->setWant(std::stoi(strInput));
-        }
-        //cout << strInput << endl;
+    int number_of_lines = 0;
+    std::string line;
+
+    while (std::getline(ifs, line)) {
+        ++number_of_lines;
     }
-    return inventory;
+    ifs.close();
+    return number_of_lines;
+}
+
+
+
+//reads in info from books.txt -> is set for the specific formating of books.txt
+BookStore* buildStore(){
+
+    int numLines = countLines();
+
+    ifstream ifs( "books.txt", ios::in );       // note no mode needed
+    if ( ! ifs.is_open() ) {
+        cout <<" Failed to open" << endl;
+    }
+    else {
+        cout <<"Opened OK" << endl;
+    }
+    //std::cout << "Number of lines in text file: " << number_of_lines;
+
+
+    BookStore* items = new BookStore();
+    //Book* toAdd;
+    for(int x=0;x<numLines;x+=3){
+        std::string name;
+        std::getline(ifs,name);
+        std::string have;
+        std::getline(ifs,have);
+        std::string want;
+        std::getline(ifs,want);
+        items->add(name,std::stoi(have),std::stoi(want));
+    }
+    ifs.close();
+    return items;
 }
 
 
