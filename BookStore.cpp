@@ -19,8 +19,8 @@ void BookStore::add(std::string title, int have, int want) {
     Book* bookToAdd = new Book(title, have, want);
     int bookFound = inventory->find(title);
     if (bookFound == -1) {
-        inventory->insertAtFront(bookToAdd);
-        //inventory->insertAt(bookToAdd);
+        //inventory->insertAtFront(bookToAdd);
+        inventory->insert(bookToAdd);
         numBooks++;
         sorted = false;
     } else {
@@ -33,13 +33,14 @@ std::string BookStore::list() {
     if (numBooks == 0){
         return "Our Inventory is empty.";
     } else {
-        if (sorted){
+        return inventory->toString();
+        /*if (sorted){
             return inventory->toString();
         } else {
-            inventory->sort();
-            sorted = true;
+            //inventory->sort();
+            //sorted = true;
             return inventory->toString();
-        }
+        }*/
     }
 }
 
@@ -175,10 +176,13 @@ void BookStore::outputInventory() {
 
 //prints out all information about given title
 void BookStore::inquire(std::string title){
+    std::cout << title << std::endl;
     Book* inquiry = getBook(title);
     if(inquiry!=nullptr){
+        std::cout << title << std::endl;
         std::cout<<inquiry->toString()<<std::endl;
     }else{
+        std::cout << title << title << std::endl;
         std::cout<<"Title Does Not Exist"<<std::endl;
     }
 
@@ -186,7 +190,7 @@ void BookStore::inquire(std::string title){
 
 void BookStore::help(){
 
-    std::cout<<"H  - Provides a summary of all available commands"<<std::endl;
+    std::cout<<"\nH  - Provides a summary of all available commands"<<std::endl;
     std::cout<<"I  - Displays all information for a specified tittle"<<std::endl;
     std::cout<<"L  - List information for the entire inventory alphabetically"<<std::endl;
     std::cout<<"A  - Add a book to the inventory"<<std::endl;
@@ -195,7 +199,7 @@ void BookStore::help(){
     std::cout<<"O  - Order books based on a file"<<std::endl;
     std::cout<<"D  - Delivery, updates books based on a file"<<std::endl;
     std::cout<<"R  - Return books"<<std::endl;
-    std::cout<<"Q  - Quit  "<<std::endl;
+    std::cout<<"Q  - Quit  \n"<<std::endl;
 }
 
 void modify(std::string title){
