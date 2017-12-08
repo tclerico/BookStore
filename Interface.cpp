@@ -78,6 +78,8 @@ void run(){
                 std::cout<<"Enter customer's preferred means of contact: ";
                 std::cin >> pref;
                 store->getBook(title)->addPerson(name, email, phone, pref);
+            } else {
+                std::cout<<"Here's a copy of " << title << "."<<std::endl;
             }
         } else if (userInput == "O"){
             //TODO Order
