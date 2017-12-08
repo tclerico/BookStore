@@ -75,7 +75,7 @@ void run(){
                 std::cin >> email;
                 std::cout<<"Enter the customer's phone number: ";
                 std::cin >> phone;
-                std::cout<<"Enter customer's prefered means of contact: ";
+                std::cout<<"Enter customer's preferred means of contact: ";
                 std::cin >> pref;
                 store->getBook(title)->addPerson(name, email, phone, pref);
             }
@@ -88,7 +88,7 @@ void run(){
         } else if (userInput == "Q"){
             std::cout << "Saving inventory...." << std::endl;
             store->outputInventory();
-            std::cout << "Thank you for visitng our Bookstore." << std::endl;
+            std::cout << "Thank you for visiting our Bookstore." << std::endl;
             close = true;
         } else {
             std::cout << "Invalid Command." << std::endl;
