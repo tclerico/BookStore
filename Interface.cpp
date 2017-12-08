@@ -6,6 +6,7 @@
 #include <iostream>
 
 void run(){
+
     BookStore* store = new BookStore();
     store->readInventory();
 
@@ -58,7 +59,9 @@ void run(){
 
             store->getBook(in)->setWant(nwant);
         } else if (userInput == "S"){
-            //TODO Sell
+
+            store->sell(); //calls function sell, function sells does all the job
+
         } else if (userInput == "O"){
             //TODO Order
         } else if (userInput == "D"){

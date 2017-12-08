@@ -55,10 +55,13 @@ Book* BookStore::getBook(std::string title){
 }
 
 
-void BookStore::sell(std::string title){
+void BookStore::sell(){
 
 
     //we have to create a UI this is how we'll sell books
+    std::string title;
+    std::cout<<"Enter title book: "<<std::endl;
+    std::cin>>title;
 
     Book* bookToSell = getBook(title);
 
@@ -77,9 +80,14 @@ void BookStore::sell(std::string title){
                 //throw
             }
         }catch (std::invalid_argument exception){
-                //after the exception being caught, recall function sell(title)
+
+            //if problem call function sell again
+                sell();
+
         }
+
     } else{
+
         std::cout<<"Book Not Available";
         //get want value for new book
         int want;
@@ -87,6 +95,7 @@ void BookStore::sell(std::string title){
         std::cin >> want;
         //add book to inventory with have=0
         add(title,0,want);
+
 
         //get customers info for waitinglist
         std::string name;
