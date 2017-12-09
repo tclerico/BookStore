@@ -75,11 +75,11 @@ BookStore* buildStore(){
 
 
 
-void run(BookStore* store){
+void run(){
 
     //think we should make the BookStore costructor use on file io
-    //BookStore* store = new BookStore();
-   // store->readInventory();
+    BookStore* store = new BookStore();
+    store->readInventory();
     std::cout<<"Welcome to the Book Store\n" << std::endl;
     bool close = false;
     while(!close){
@@ -161,7 +161,7 @@ void run(BookStore* store){
         } else if (userInput == "R"){
             //TODO Return
         } else if (userInput == "Q"){
-            std::cout << "Saving inventory...." << std::endl;
+            std::cout << "\nSaving inventory...." << std::endl;
             store->outputInventory();
             std::cout << "Thank you for visiting our Bookstore." << std::endl;
             close = true;
@@ -177,6 +177,6 @@ void run(BookStore* store){
 }
 
 int main(){
-    BookStore* nStore = buildStore();
-    run(nStore);
+    //BookStore* nStore = buildStore();
+    run();
 }

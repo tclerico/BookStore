@@ -130,11 +130,11 @@ bool BookStore::sell(std::string title){
 void BookStore::readInventory() {
     std::ifstream myFile("books.txt");
 
-    /*if (!myFile){
+    if (!myFile){
         std::cout << "Error. Could not find data." << std::endl;
         exit(1);
-    }*/
-    while (myFile){
+    }
+    while (!myFile.eof()){
         std::string title;
         std::string want;
         std::string have;
@@ -180,14 +180,25 @@ void BookStore::outputInventory() {
             outf << book->getWant() << std::endl;
             if (book->hasWaitingList()) {
                 outf << "yes"<< std::endl;;
-                Person *person = book->removePerson();
-                outf << person->getName() << std::endl;
-                outf << person->getPhone() << std::endl;
-                outf << person->getEmail() << std::endl;
-                outf << person->getPref() << std::endl;
-
+                int numPeople = book->getNumPeople();
+                outf << numPeople << std::endl;
+                for (int j = 0; j < numPeople; j++) {
+                    Person *person = book->removePerson();
+                    outf << person->getName() << std::endl;
+                    outf << person->getPhone() << std::endl;
+                    outf << person->getEmail() << std::endl;
+                    if (i == inventory->itemCount() - 1) {
+                        outf << person->getPref();
+                    } else {
+                        outf << person->getPref() << std::endl;
+                    }
+                }
             } else {
-                outf << "no" << std::endl;
+                if (i == inventory->itemCount() - 1) {
+                    outf << "no";
+                } else {
+                    outf << "no" << std::endl;
+                }
             }
         }
     }

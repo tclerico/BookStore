@@ -17,9 +17,18 @@ no
 Homegoing
 0
 5
-no
+yes
+2
+Dylan
+123456789
+dylan@mail
+phone
+Max
+987654321
+max@mail
+email
 Housekeeping
-4
+3
 4
 no
 Mr. Pnumbra's Bookstore
