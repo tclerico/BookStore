@@ -5,6 +5,7 @@
 
 #include "LinkedList.h"
 
+
 //O(1)
 LinkedList::LinkedList(){
     front = nullptr;
@@ -257,3 +258,4 @@ void LinkedList::sort(){
         }
     }
 }
+

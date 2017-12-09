@@ -22,7 +22,8 @@ void BookStore::add(std::string title, int have, int want) {
         //inventory->insertAtFront(bookToAdd);
         inventory->insert(bookToAdd);
         numBooks++;
-        sorted = false;
+        outputInventory();
+        //sorted = false;
     } else {
         std::cout << "That book already exists." << std::endl;
         std::cout << inventory->getBookAt(bookFound)->toString() << std::endl;
@@ -44,8 +45,6 @@ std::string BookStore::list() {
     }
 }
 
-//MAKE THIS WORK FOR WHEN THE BOOK ISNT IN THE INVENTORY
-//can you use a throw for that?
 Book* BookStore::getBook(std::string title){
     int found = inventory->find(title);
     if (found >= 0){
@@ -66,66 +65,6 @@ bool BookStore::sell(std::string title){
     }
 }
 
-    /*//we have to create a UI this is how we'll sell books
-    std::string title;
-    std::cout<<"Enter title book: "<<std::endl;
-    std::cin>>title;
-
-    Book* bookToSell = getBook(title);
-
-    if(bookToSell != nullptr && bookToSell->getHave() > 0){
-
-        std::string response;
-        std::cout<<"Would You like to buy " + bookToSell->getName() + " Y/N:    "<<std::endl;
-        std::cin >> response;
-        try{
-            if(response == "Y" ){
-                bookToSell->sell();
-                std::cout<<"Thanks for your purchase"<<std::endl;
-            }else if(response == "N"){
-                std::cout<<"Thanks for your interest"<<std::endl;
-            }else {
-                //throw
-            }
-        }catch (std::invalid_argument exception){
-
-            //if problem call function sell again
-                sell();
-
-        }
-
-    } else{
-
-        std::cout<<"Book Not Available";
-        //get want value for new book
-        int want;
-        std::cout<<"Title will be added please enter want value: ";
-        std::cin >> want;
-        //add book to inventory with have=0
-        add(title,0,want);
-
-
-        //get customers info for waitinglist
-        std::string name;
-        std::string phone;
-        std::string email;
-        std::string pref;
-        std::cout<<"Enter the customer's name: ";
-        std::cin >> name;
-        std::cout<<"Enter the customer's email: ";
-        std::cin >> email;
-        std::cout<<"Enter the customer's phone number: ";
-        std::cin >> phone;
-        std::cout<<"Enter customer's prefered means of contact: ";
-        std::cin >> pref;
-
-        //add person to the waiting list for the new book
-        getBook(title)->addPerson(name,email,phone,pref);
-
-    }
-
-
-}*/
 
 void BookStore::readInventory() {
     std::ifstream myFile("books.txt");
@@ -143,6 +82,11 @@ void BookStore::readInventory() {
         getline(myFile, want);
         getline(myFile, have);
         getline(myFile, waiting);
+
+        //need these two lines on windows for the titles to be read in
+        int len = title.length();
+        title.erase(len-1,len);
+
         add(title, std::stoi(want), std::stoi(have));
         if (waiting == "yes"){
             //TODO
@@ -202,7 +146,7 @@ void BookStore::outputInventory() {
             }
         }
     }
-    //TODO
+
 }
 
 //prints out all information about given title

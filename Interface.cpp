@@ -8,76 +8,9 @@
 using namespace std;
 
 
-int countLines(){
-    ifstream ifs( "books.txt", ios::in );       // note no mode needed
-    if ( ! ifs.is_open() ) {
-        cout <<" Failed to open" << endl;
-    }/*
-    else {
-        cout <<"Opened OK" << endl;
-    }*/
-
-    int number_of_lines = 0;
-    std::string line;
-
-    while (std::getline(ifs, line)) {
-        ++number_of_lines;
-    }
-    ifs.close();
-    return number_of_lines;
-}
-
-
-
-//reads in info from books.txt -> is set for the specific formating of books.txt
-BookStore* buildStore(){
-
-    int numLines = countLines();
-
-    ifstream ifs( "books.txt", ios::in );       // note no mode needed
-    if ( ! ifs.is_open() ) {
-        cout <<" Failed to open" << endl;
-    }/*
-    else {
-        cout <<"Opened OK" << endl;
-    }*/
-    //std::cout << "Number of lines in text file: " << number_of_lines;
-
-
-    BookStore* items = new BookStore();
-    //Book* toAdd;
-    for(int x=0;x<numLines;x+=4){
-        std::string name;
-        std::getline(ifs,name);
-        int len = name.length();
-        //name.erase(len-1,len);
-        std::string have;
-        std::getline(ifs,have);
-        std::string want;
-        std::getline(ifs,want);
-        items->add(name,std::stoi(have),std::stoi(want));
-        std::string waitingList;
-        std::getline(ifs, waitingList);
-        if (waitingList == "yes"){
-            std::string personName;
-            getline(ifs, personName);
-            std::string personPhone;
-            getline(ifs, personPhone);
-            std::string personEmail;
-            getline(ifs, personEmail);
-            std::string personPref;
-            getline(ifs, personPref);
-        }
-    }
-    ifs.close();
-    return items;
-}
-
-
 
 void run(){
 
-    //think we should make the BookStore costructor use on file io
     BookStore* store = new BookStore();
     store->readInventory();
     std::cout<<"Welcome to the Book Store\n" << std::endl;
@@ -85,15 +18,19 @@ void run(){
     while(!close){
         std::string userInput;
         std::cout<<"Enter a Command or 'H' For Help: ";
-        std::cin >> userInput;
+        getline(cin,userInput);
+
+        //if user enters anything after command eg. title then it will delete and take command.
+        int len = userInput.length();
+        userInput = userInput.erase(1,len);
+
         if(userInput == "H"){
-            //TODO
             store->help();
         }
         else if(userInput == "I"){
             std::string title;
             std::cout<<"Please Enter The Book Title: ";
-            std::cin >> title;
+            getline(cin,title);
             store->inquire(title);
         }
         else if(userInput == "L"){
@@ -104,37 +41,62 @@ void run(){
             std::string want;
             std::string have;
 
-            std::cout<<"Enter the Title of the Book: ";
-            std::cin >>  title;
-            std::cout<<"Enter the Have value: ";
-            std::cin >> have;
-            std::cout<<"Enter the Want value: ";
-            std::cin >> want;
+            //loop until correct values are entered
+            bool correct = false;
+            while(!correct) {
+                std::cout << "Enter the Title of the Book: ";
+                getline(cin, title);
+                std::cout << "Enter the Have value: ";
+                getline(cin, have);
+                std::cout << "Enter the Want value: ";
+                getline(cin, want);
 
+                //try + catch to make sure the have and wants are numbers
+                try {
+                    int w = std::stoi(want);
+                    int h = std::stoi(have);
+                    correct=true;
+                }catch (exception e){
+                    std::cout<<"One or More Inputs Were Invalid, Try Again"<<std::endl;
+                }
 
+            }
 
             store->add(title,std::stoi(have),std::stoi(want));
+            std::cout<<"Successfully Added Book"<<std::endl;
 
         }
         else if(userInput == "M"){
             std::string title;
 
             std::cout<<"Enter the Title of the Book: ";
-            std::cin>>title;
+            getline(cin,title);
 
             int want = store->getBook(title)->getWant();
             int have = store->getBook(title)->getHave();
 
             std::cout<<"Current Have: " << have << " Current Want: "<<want<<std::endl;
-            std::cout<<"Enter New Want Value: ";
-            int newWant;
-            std::cin>>newWant;
 
-            store->getBook(title)->setWant(newWant);
+            string newWant;
+            bool correct=false;
+            while(!correct){
+                std::cout<<"Enter New Want Value: ";
+                getline(cin,newWant);
+
+                try{
+                    int w = std::stoi(newWant);
+                    correct = true;
+                }catch(exception e){
+                    std::cout<<"Invalid Input, Try Again"<<std::endl;
+                }
+            }
+            store->getBook(title)->setWant(std::stoi(newWant));
+            std::cout<<"Value Successfully Changed"<<std::endl;
+
         } else if (userInput == "S"){
             std::string title;
             std::cout<<"Enter the Title of the Book: ";
-            std::cin>>title;
+            getline(cin,title);
             bool sold = store->sell(title); //calls function sell, function sells does all the job
             if (!sold){
                 std::cout<<"We're currently out of stock with that book. Let's add you to the waiting list."<<std::endl;
@@ -143,17 +105,18 @@ void run(){
                 std::string email;
                 std::string pref;
                 std::cout<<"Enter the customer's name: ";
-                std::cin >> name;
+                getline(cin,name);
                 std::cout<<"Enter the customer's email: ";
-                std::cin >> email;
+                getline(cin,email);
                 std::cout<<"Enter the customer's phone number: ";
-                std::cin >> phone;
+                getline(cin,phone);
                 std::cout<<"Enter customer's preferred means of contact: ";
-                std::cin >> pref;
+                getline(cin,pref);
                 store->getBook(title)->addPerson(name, email, phone, pref);
             } else {
                 std::cout<<"Here's a copy of " << title << "."<<std::endl;
             }
+
         } else if (userInput == "O"){
             //TODO Order
             std::cout << "\nCreating purchase order..." << std::endl;
