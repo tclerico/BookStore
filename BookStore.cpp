@@ -22,7 +22,7 @@ void BookStore::add(std::string title, int have, int want) {
         //inventory->insertAtFront(bookToAdd);
         inventory->insert(bookToAdd);
         numBooks++;
-        outputInventory();
+        //outputInventory();
         //sorted = false;
     } else {
         std::cout << "That book already exists." << std::endl;
@@ -84,8 +84,8 @@ void BookStore::readInventory() {
         getline(myFile, waiting);
 
         //need these two lines on windows for the titles to be read in
-        int len = title.length();
-        title.erase(len-1,len);
+        //int len = title.length();
+        //title.erase(len-1,len);
 
         add(title, std::stoi(want), std::stoi(have));
         if (waiting == "yes"){
