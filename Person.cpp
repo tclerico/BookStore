@@ -38,6 +38,10 @@ Person* Person::getNext(){
     return next;
 }
 
+std::string Person::toString(){
+    return this->name + " " + this->email + " " + this->phone + " " + this->prefer + ".";
+}
+
 void Person::setNext(Person* newNext){
     next = newNext;
 }

@@ -259,11 +259,62 @@ void BookStore::order(){
 
 void BookStore::delivery(){
     //TODO
+    std::ifstream myFile("order.txt");
 
+    if (!myFile){
+        std::cout << "Error. Could not find data." << std::endl;
+        exit(1);
+    }
+    while (!myFile.eof()){
+        std::string title;
+        std::string books;
+        getline(myFile, title);
+        getline(myFile, books);
+        int bookIdx = inventory->find(title);
+        int numOrdered = std::stoi(books);
+        if (bookIdx >= 0){
+            Book* book = inventory->getBookAt(bookIdx);
+            if (book->hasWaitingList()){
+                int numPeople = book->getNumPeople();
+                while (numOrdered > 0 && book->hasWaitingList()){
+                    Person* personSold = book->removePerson();
+                    std::cout << title << ": " << personSold->toString() << std::endl;
+                    numOrdered--;
+                }
+                if (numOrdered > 0){
+                    book->setHave(numOrdered);
+                }
+            } else { // no waiting list
+                book->setHave(book->getHave() + numOrdered);
+            }
+        } else { // book not found
+            add(title, numOrdered, numOrdered); // should we ask for want value?
+        }
+    }
 }
 
-void returnBooks(){
+void BookStore::returnBooks(){
     //TODO
+    std::ofstream outf("return.txt");
+
+    if (!outf){
+        std::cout << "Error. Could not find data." << std::endl;
+        exit(1);
+    }
+
+    for (int i = 0; i < inventory->itemCount(); i++) {
+        Book* book = inventory->getBookAt(i);
+        if (book->getHave() > book->getWant()){
+            outf << book->getName() << std::endl;
+            if (i == inventory->itemCount() - 1){
+                outf << (book->getHave() - book->getWant());
+            } else {
+                outf << (book->getHave() - book->getWant()) << std::endl;
+            }
+            book->setHave(book->getWant());
+        }
+    }
+
 }
 
 

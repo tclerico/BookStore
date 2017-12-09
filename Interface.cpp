@@ -156,13 +156,19 @@ void run(){
             }
         } else if (userInput == "O"){
             //TODO Order
-            std::cout << "Creating purchase order..." << std::endl;
+            std::cout << "\nCreating purchase order..." << std::endl;
             store->order();
-            std::cout << "Purchase order created." << std::endl;
+            std::cout << "Purchase order created.\n" << std::endl;
         } else if (userInput == "D"){
             //TODO Delivery
+            std::cout << "\nDelivery received..." << std::endl;
+            store->delivery();
+            std::cout << "Delivery processed\n" << std::endl;
         } else if (userInput == "R"){
             //TODO Return
+            std::cout << "\nWriting return invoice..." << std::endl;
+            store->returnBooks();
+            std::cout << "Return processed\n" << std::endl;
         } else if (userInput == "Q"){
             std::cout << "\nSaving inventory...." << std::endl;
             store->outputInventory();

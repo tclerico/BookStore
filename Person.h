@@ -43,6 +43,8 @@ public:
     Person* getNext();
     void setNext(Person* newNext);
 
+    std::string toString();
+
 
 };
 

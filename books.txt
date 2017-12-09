@@ -1,53 +1,48 @@
 A Darker Shade of Magic
-3
-6
+2
+5
 no
 Cat's Cradle
-6
-7
-no
-Forgive Me Leonard Peacock
 3
 4
+no
+Forgive Me Leonard Peacock
+2
+2
 no
 History of Wolves
 2
-5
+2
 no
 Homegoing
 0
-5
-yes
-2
-Dylan
-123456789
-dylan@mail
-phone
-Max
-987654321
-max@mail
-email
-Housekeeping
-3
 4
 no
+Housekeeping
+2
+4
+no
+Legend
+3
+3
+no
 Mr. Pnumbra's Bookstore
-7
-5
+2
+2
 no
 The Great Gatsby
-5
-8
+4
+4
 no
 The Life of Pi
-6
+2
 2
 no
 The Storied Life of AJ Thickery
-3
-5
+2
+4
 no
 Virgin Suicides
-3
-6
+2
+2
 no
