@@ -109,7 +109,8 @@ void BookStore::readInventory() {
 }
 
 void BookStore::outputInventory() {
-    std::ofstream outf("books.txt");
+    std::ofstream outf;
+    outf.open("books.txt");
 
     if (!outf){
         std::cout << "Error. Could not find data." << std::endl;
@@ -146,6 +147,7 @@ void BookStore::outputInventory() {
             }
         }
     }
+    outf.close();
 
 }
 
