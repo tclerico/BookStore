@@ -156,6 +156,9 @@ void run(){
             }
         } else if (userInput == "O"){
             //TODO Order
+            std::cout << "Creating purchase order..." << std::endl;
+            store->order();
+            std::cout << "Purchase order created." << std::endl;
         } else if (userInput == "D"){
             //TODO Delivery
         } else if (userInput == "R"){

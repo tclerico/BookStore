@@ -234,12 +234,32 @@ void BookStore::modify(std::string title){
     //TODO
 }
 
-void order(){
+void BookStore::order(){
     //TODO
+    std::ofstream outf("order.txt");
+
+    if (!outf){
+        std::cout << "Error. Could not find data." << std::endl;
+        exit(1);
+    }
+
+    for (int i = 0; i < inventory->itemCount(); i++) {
+        Book *book = inventory->getBookAt(i);
+        int numToOrder = book->getWant() - book->getHave();
+        if (numToOrder > 0) {
+            outf << book->getName() << std::endl;
+            if (i == inventory->itemCount() - 1) {
+                outf << numToOrder;
+            } else {
+                outf << numToOrder << std::endl;
+            }
+        }
+    }
 }
 
-void delivery(){
+void BookStore::delivery(){
     //TODO
+
 }
 
 void returnBooks(){
