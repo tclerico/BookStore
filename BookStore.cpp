@@ -60,6 +60,10 @@ bool BookStore::sell(std::string title){
     if (bookToSell != nullptr && bookToSell->getHave() > 0){
         getBook(title)->sell();
         return true;
+    } else if (bookToSell == nullptr) {
+        Book* newBook = new Book(title, 0, 5);
+        inventory->insert(newBook);
+        return false;
     } else {
         return false;
     }
@@ -194,11 +198,7 @@ void BookStore::order(){
         int numToOrder = book->getWant() - book->getHave();
         if (numToOrder > 0) {
             outf << book->getName() << std::endl;
-            if (i == inventory->itemCount() - 1) {
-                outf << numToOrder;
-            } else {
-                outf << numToOrder << std::endl;
-            }
+            outf << numToOrder << std::endl;
         }
     }
 }
@@ -216,25 +216,27 @@ void BookStore::delivery(){
         std::string books;
         getline(myFile, title);
         getline(myFile, books);
-        int bookIdx = inventory->find(title);
-        int numOrdered = std::stoi(books);
-        if (bookIdx >= 0){
-            Book* book = inventory->getBookAt(bookIdx);
-            if (book->hasWaitingList()){
-                int numPeople = book->getNumPeople();
-                while (numOrdered > 0 && book->hasWaitingList()){
-                    Person* personSold = book->removePerson();
-                    std::cout << title << ": " << personSold->toString() << std::endl;
-                    numOrdered--;
+        if (title != "" && books != "" ) {
+            int bookIdx = inventory->find(title);
+            int numOrdered = std::stoi(books);
+            if (bookIdx >= 0) {
+                Book *book = inventory->getBookAt(bookIdx);
+                if (book->hasWaitingList()) {
+                    int numPeople = book->getNumPeople();
+                    while (numOrdered > 0 && book->hasWaitingList()) {
+                        Person *personSold = book->removePerson();
+                        std::cout << title << ": " << personSold->toString() << std::endl;
+                        numOrdered--;
+                    }
+                    if (numOrdered > 0) {
+                        book->setHave(numOrdered);
+                    }
+                } else { // no waiting list
+                    book->setHave(book->getHave() + numOrdered);
                 }
-                if (numOrdered > 0){
-                    book->setHave(numOrdered);
-                }
-            } else { // no waiting list
-                book->setHave(book->getHave() + numOrdered);
+            } else { // book not found
+                add(title, numOrdered, numOrdered); // should we ask for want value?
             }
-        } else { // book not found
-            add(title, numOrdered, numOrdered); // should we ask for want value?
         }
     }
 }
