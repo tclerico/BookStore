@@ -149,6 +149,5 @@ void run(){
 }
 
 int main(){
-    //BookStore* nStore = buildStore();
     run();
 }
