@@ -26,9 +26,31 @@ LinkedQueue::LinkedQueue(const LinkedQueue& queueToCopy){
 //Destructor
 LinkedQueue::~LinkedQueue(){
     while (front != nullptr){
-        Person* temp = end;
+        Person* temp = front;
         front = front->getNext();
         delete temp;
+    }
+}
+
+//assignment operator
+LinkedQueue& LinkedQueue::operator=(const LinkedQueue& queueToCopy){
+    if(this != &queueToCopy){
+        while (front != nullptr){
+            Person* temp = front;
+            front = front->getNext();
+            delete temp;
+        }
+
+        front = nullptr;
+        end = nullptr;
+        Person* ptr = queueToCopy.front;
+        while(ptr!= nullptr){
+            this->enqueue(ptr);
+            ptr = ptr->getNext();
+        }
+
+    }else{
+        return *this;
     }
 }
 

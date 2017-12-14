@@ -14,59 +14,43 @@ LinkedList::LinkedList(){
 }
 
 //O(n)
+//copy constructor
 LinkedList::LinkedList(const LinkedList& listToCopy) {
-    //TODO
-    /*if (listToCopy.front == nullptr){
-        front = nullptr;
-        end = nullptr;
-        numItems = 0;
-    } else {
-        Book* currentNode = listToCopy.front;
-        front = new LinkedNode(currentCopyNode->getItem());
-        currentCopyNode = currentCopyNode->getNext();
-        LinkedNode* currentNode = front;
-        while (currentCopyNode != nullptr){
-            LinkedNode* newNode = new LinkedNode(currentCopyNode->getItem());
-            currentNode->setNext(newNode);
-            currentCopyNode = currentCopyNode->getNext();
-            currentNode = currentNode->getNext();
-        }
-        end = currentNode;
-        numItems = listToCopy.numItems;
-    }*/
-}
-
-//O(n)
-LinkedList& LinkedList::operator=(const LinkedList& linkedListToCopy){
-    //TODO
-    /*if (this != &linkedListToCopy) {
-        numItems = linkedListToCopy.numItems;
-        if (numItems == 0){
-            front = nullptr;
-            end = nullptr;
-        } else {
-            this->clearList();
-            LinkedNode* currentNode = new LinkedNode(linkedListToCopy.front->getItem());
-            front = currentNode;
-            LinkedNode* nodeToCopy = linkedListToCopy.front->getNext();
-            while (nodeToCopy->getNext() != nullptr) {
-                LinkedNode* copiedNode = new LinkedNode(nodeToCopy->getItem());
-                currentNode->setNext(copiedNode);
-                nodeToCopy = nodeToCopy->getNext();
-                currentNode = currentNode->getNext();
-            }
-            LinkedNode* lastNode = new LinkedNode(nodeToCopy->getItem());
-            currentNode->setNext(lastNode);
-            end = lastNode;
-        }
+    front = nullptr;
+    end = nullptr;
+    Book* ptr = listToCopy.front;
+    while(ptr != nullptr){
+        Book* nBook = new Book(ptr->getName(),ptr->getHave(),ptr->getWant());
+        this->insert(nBook);
+        ptr->getNext();
     }
-    return *this;*/
+
 }
 
 //O(n)
+//destructor
 LinkedList::~LinkedList() {
-    //TODO
     clearList();
+}
+
+
+
+//O(n)
+
+//assignment operator
+LinkedList& LinkedList::operator=(const LinkedList& linkedListToCopy){
+    if(this != &linkedListToCopy){
+        clearList();
+        Book* ptr = linkedListToCopy.front;
+        while(ptr != nullptr){
+            Book* nBook = new Book(ptr->getName(),ptr->getHave(),ptr->getWant());
+            this->insert(nBook);
+            ptr = ptr->getNext();
+        }
+
+    }else{
+        return *this;
+    }
 }
 
 

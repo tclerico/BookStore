@@ -33,6 +33,9 @@ public:
 
     //Destructor
     ~LinkedQueue();
+
+    //Assignment Operator
+    LinkedQueue& operator=(const LinkedQueue& queueToCopy);
     
     //adds an item to the end of the queue
     void enqueue(Person* item);
