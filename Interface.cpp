@@ -5,6 +5,8 @@
 #include "BookStore.h"
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <locale>
 using namespace std;
 
 
@@ -16,13 +18,16 @@ void run(){
     std::cout<<"Welcome to the Book Store\n" << std::endl;
     bool close = false;
     while(!close){
-        std::string userInput;
+        std::string ui;
         std::cout<<"Enter a Command or 'H' For Help: ";
-        getline(cin,userInput);
+        getline(cin,ui);
 
         //if user enters anything after command eg. title then it will delete and take command.
-        int len = userInput.length();
-        userInput = userInput.erase(1,len);
+        int len = ui.length();
+        ui = ui.erase(1,len);
+        //if input is lower case -> capitalize
+        std::locale loc;
+        std::string userInput = string(1,std::toupper(ui[0],loc));
 
         if(userInput == "H"){
             store->help();
