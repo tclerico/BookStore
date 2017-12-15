@@ -74,10 +74,7 @@ void LinkedQueue::enqueue(Person* item){
 
 
 Person* LinkedQueue::dequeue(){
-    //TODO, consider cases where:
-    // the queue is empty
-    // the queue has one item
-    // the queue has many items
+
     if (isEmpty()){
         throw std::out_of_range("Error. Out of range.");
     } if (front == end){

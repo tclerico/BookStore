@@ -15,6 +15,8 @@ BookStore::BookStore() {
     sorted = false;
 }
 
+
+
 void BookStore::add(std::string title, int have, int want) {
     int bookFound = inventory->find(title);
     if (bookFound == -1) {
@@ -87,13 +89,9 @@ void BookStore::readInventory() {
         getline(myFile, have);
         getline(myFile, waiting);
 
-        //need these two lines on windows for the titles to be read in
-        //int len = title.length();
-        //title.erase(len-1,len);
 
         add(title, std::stoi(want), std::stoi(have));
         if (waiting == "yes"){
-            //TODO
             std::string numWaiting;
             getline(myFile, numWaiting);
             int numPeople = std::stoi(numWaiting);
@@ -180,12 +178,9 @@ void BookStore::help(){
     std::cout<<"Q  - Quit  \n"<<std::endl;
 }
 
-void BookStore::modify(std::string title){
-    //TODO
-}
 
 void BookStore::order(){
-    //TODO
+
     std::ofstream outf("order.txt");
 
     if (!outf){
@@ -204,7 +199,7 @@ void BookStore::order(){
 }
 
 void BookStore::delivery(){
-    //TODO
+
     std::ifstream myFile("order.txt");
 
     if (!myFile){
@@ -242,7 +237,7 @@ void BookStore::delivery(){
 }
 
 void BookStore::returnBooks(){
-    //TODO
+
     std::ofstream outf("return.txt");
 
     if (!outf){
