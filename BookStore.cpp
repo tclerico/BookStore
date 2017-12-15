@@ -172,8 +172,8 @@ void BookStore::help(){
     std::cout<<"A  - Add a book to the inventory"<<std::endl;
     std::cout<<"M  - Modify the want value for the specified tittle"<<std::endl;
     std::cout<<"S  - Sell book"<<std::endl;
-    std::cout<<"O  - Order books based on a file"<<std::endl;
-    std::cout<<"D  - Delivery, updates books based on a file"<<std::endl;
+    std::cout<<"O  - Order books based on a current inventory"<<std::endl;
+    std::cout<<"D  - Delivery, updates books based on an order invoice"<<std::endl;
     std::cout<<"R  - Return books"<<std::endl;
     std::cout<<"Q  - Quit  \n"<<std::endl;
 }
