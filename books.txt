@@ -7,20 +7,24 @@ Cat's Cradle
 4
 no
 Forgive Me Leonard Peacock
-2
-2
+3
+3
+no
+Harry Potter
+5
+4
 no
 History of Wolves
-2
-2
+3
+3
 no
 Homegoing
-0
-4
+5
+3
 no
 Housekeeping
-2
-4
+6
+3
 no
 Legend
 3
@@ -30,19 +34,23 @@ Mr. Pnumbra's Bookstore
 2
 2
 no
+Pet Sematary
+5
+5
+no
 The Great Gatsby
 4
-4
+3
 no
 The Life of Pi
 2
 2
 no
 The Storied Life of AJ Thicker
-2
+4
 4
 no
 Virgin Suicide
-2
-2
+4
+4
 no
