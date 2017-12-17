@@ -85,6 +85,9 @@ void BookStore::readInventory() {
         getline(myFile, have);
         getline(myFile, waiting);
 
+        //these two lines neccessary for first run on windows
+        //int len = title.length();
+        //title = title.erase(len-1,len);
 
         add(title, std::stoi(want), std::stoi(have));
         if (waiting == "yes"){
