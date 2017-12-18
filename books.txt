@@ -11,24 +11,28 @@ Forgive Me Leonard Peacock
 3
 no
 Harry Potter
-5
 4
+4
+no
+Hatchet
+6
+6
 no
 History of Wolves
 3
 3
 no
 Homegoing
-5
+3
 3
 no
 Housekeeping
-6
+3
 3
 no
 Legend
-3
-3
+1
+1
 no
 Mr. Pnumbra's Bookstore
 2
@@ -39,7 +43,7 @@ Pet Sematary
 5
 no
 The Great Gatsby
-4
+3
 3
 no
 The Life of Pi
