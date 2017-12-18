@@ -190,7 +190,7 @@ void BookStore::order(){
 
     for (int i = 0; i < inventory->itemCount(); i++) {
         Book *book = inventory->getBookAt(i);
-        int numToOrder = book->getWant() - book->getHave();
+        int numToOrder = book->getNumPeople() + book->getWant() - book->getHave();
         if (numToOrder > 0) {
             outf << book->getName() << std::endl;
             outf << numToOrder << std::endl;
