@@ -33,8 +33,6 @@ public:
 
     void add(std::string title, int have, int want); //adds books to the inventory, it will prompt the user for the book's info.
 
-    void modify(std::string title);
-
     bool sell(std::string title);
 
     void addToWaitingList();

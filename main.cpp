@@ -104,28 +104,33 @@ void BookTester(Book* tb) {
 }
 
 void bookStoreTester(BookStore* store) {
+    using namespace std;
+    std::cout<< store->list()<< std::endl;
+
+    cout<<"TESTING SELL: A Darker Shade of Magic"<<endl;
+    store->sell("A Darker Shade of Magic");
+    cout<<"HAVE SHOULD EQUAL 4"<<endl;
+    store->inquire("A Darker Shade of Magic");
+
+    cout<<"\nTesting Add"<<endl;
+    store->add("Test Book",56,2);
+    store->inquire("Test Book");
+
+    store->returnBooks();
+    store->inquire("Test Book");
+
+    store->order();
+    store->delivery();
 
 
-    store->add("Harry Potter", 6, 4);
-    store->add("Wuthering Heights", 2, 4);
-    store->add("Pride and Prejudice", 3, 4);
-    store->add("Gone With The Wind", 6, 1);
-    store->add("Les Miserables", 2, 4);
-    store->add("The Hate U Give", 3, 4);
-    store->add("Voltaire", 6, 4);
-    store->add("Hatchet", 3, 7);
-    store->add("Animals", 6, 7);
-    store->add("Milk and Honey", 6, 4);
-    store->add("Romeo and Juliet", 6, 4);
-    std::cout << store->list() << std::endl;
 }
 
 
 
 int main() {
 
-    /*std::cout<<"::::::TESTING PERSON CLASS:::::::\n"<<std::endl;
-    Person* testP = new     Person("Tim","tclerico@ithaca","354-8976","email");
+    std::cout<<"::::::TESTING PERSON CLASS:::::::\n"<<std::endl;
+    Person* testP = new Person("Tim","tclerico@ithaca","354-8976","email");
     PersonTest(testP);
 
     std::cout << "\n------------------" << std::endl;
@@ -138,31 +143,8 @@ int main() {
     std::cout << "\n------------------" << std::endl;
     std::cout<<"\n::::::::TESTING BOOKSTORE:::::::::::\n"<<std::endl;
     BookStore* inventory = new BookStore();
+    inventory->readInventory();
     bookStoreTester(inventory);
-
-    std::cout<<"Sell testing"<<std::endl;
-    inventory->sell("Gone With The Wind");
-
-    Book* book = inventory->getBook("Gone With The Wind");
-
-    if(book->getHave() == 5){
-        std::cout<<"Passed: book sold";
-    }
-
-    inventory->sell("This Book Doesnt Exist");
-
-    Book* test = inventory->getBook("This Book Doesnt Exist");
-
-    std::cout<< test->toString() << std::endl;
-    std::cout<<"new title waitlist: " << test->hasWaitingList()<<std::endl;
-
-
-    BookStore* store = new BookStore();
-
-    store->readInventory();
-
-    store->list();
-     */
 
     return 0;
 }
