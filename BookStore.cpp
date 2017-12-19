@@ -14,7 +14,12 @@ BookStore::BookStore() {
 }
 
 
-
+/**
+ * Adds a book to the inventory in alphabetical order
+ * @param title - the title of the book to be added
+ * @param have - the have value of the book to be added
+ * @param want - the want value of the book to be added
+ */
 void BookStore::add(std::string title, int have, int want) {
     int bookFound = inventory->find(title);
     if (bookFound == -1) {
@@ -27,6 +32,10 @@ void BookStore::add(std::string title, int have, int want) {
     }
 }
 
+/**
+ * Creates a string of all the books in the inventory
+ * @return a string of all the books in the inventory
+ */
 std::string BookStore::list() {
     if (numBooks == 0){
         return "Our Inventory is empty.";
@@ -42,6 +51,11 @@ std::string BookStore::list() {
     }
 }
 
+/**
+ * Gets a finds a book by searching by title
+ * @param title - title of book to return
+ * @return the book requested or a nullptr if it's not found
+ */
 Book* BookStore::getBook(std::string title){
     int found = inventory->find(title);
     if (found >= 0){
@@ -51,7 +65,11 @@ Book* BookStore::getBook(std::string title){
     }
 }
 
-
+/**
+ * Decrements from a book's have value
+ * @param title - title of book to be sold.
+ * @return boolean - true if the book was sold, false if it was not found
+ */
 bool BookStore::sell(std::string title){
     Book* bookToSell = getBook(title);
     if (bookToSell != nullptr && bookToSell->getHave() > 0){
@@ -66,7 +84,9 @@ bool BookStore::sell(std::string title){
     }
 }
 
-
+/**
+ * Reads in a text file to create the inventory of books
+ */
 void BookStore::readInventory() {
     std::ifstream myFile("books.txt");
 
@@ -108,6 +128,9 @@ void BookStore::readInventory() {
     }
 }
 
+/**
+ * Saves the inventory to a file
+ */
 void BookStore::outputInventory() {
     std::ofstream outf;
     outf.open("books.txt");
@@ -151,17 +174,24 @@ void BookStore::outputInventory() {
 
 }
 
-//prints out all information about given title
-void BookStore::inquire(std::string title){
+/**
+ * Creates a string of a requested books information
+ * @param title - title of book being requested
+ * @return information of the book or a message saying it wasn't found
+ */
+std::string BookStore::inquire(std::string title){
     Book* inquiry = getBook(title);
     if(inquiry!=nullptr){
-        std::cout<<inquiry->toString()<<std::endl;
+        return inquiry->toString();
     }else{
-        std::cout<<"Title Does Not Exist"<<std::endl;
+        return "Title Does Not Exist";
     }
 
 }
 
+/**
+ * Prints out all of the commands and a brief description of what they do
+ */
 void BookStore::help(){
 
     std::cout<<"\nH  - Provides a summary of all available commands"<<std::endl;
@@ -176,7 +206,9 @@ void BookStore::help(){
     std::cout<<"Q  - Quit  \n"<<std::endl;
 }
 
-
+/**
+ * Writes a purchase order based on the have/want values of the current inventory
+ */
 void BookStore::order(){
 
     std::ofstream outf("order.txt");
@@ -196,6 +228,9 @@ void BookStore::order(){
     }
 }
 
+/**
+ * Reads in an purchase order and modifies the inventory accordingly
+ */
 void BookStore::delivery(){
 
     std::ifstream myFile("order.txt");
@@ -234,11 +269,19 @@ void BookStore::delivery(){
     }
 }
 
+/**
+ * Changes the want value of a book
+ * @param title - title of book to be modified
+ * @param newWant - desired new want value
+ */
 void BookStore::modify(std::string title, int newWant){
     Book* bookToChange = this->getBook(title);
     bookToChange->setWant(newWant);
 }
 
+/**
+ * Writes out a return invoice based on each book in the inventory's have/want value
+ */
 void BookStore::returnBooks(){
 
     std::ofstream outf("return.txt");

@@ -36,7 +36,7 @@ void Interface::run(){
             std::string title;
             std::cout<<"Please Enter The Book Title: ";
             getline(cin,title);
-            store->inquire(title);
+            std::cout <<  "\n" << store->inquire(title) << "\n" << std::endl;
         }
         else if(userInput == "L"){
             std::cout << store->list() << std::endl;
@@ -96,7 +96,7 @@ void Interface::run(){
                 }
             }
             store->modify(title, std::stoi(newWant));
-            std::cout<<"Value Successfully Changed"<<std::endl;
+            std::cout<<"Value Successfully Changed\n"<<std::endl;
 
         } else if (userInput == "S"){
             std::string title;
@@ -119,7 +119,7 @@ void Interface::run(){
                 getline(cin,pref);
                 store->getBook(title)->addPerson(name, email, phone, pref);
             } else {
-                std::cout<<"Here's a copy of " << title << "."<<std::endl;
+                std::cout<<"Here's a copy of " << title << ".\n"<<std::endl;
             }
 
         } else if (userInput == "O"){

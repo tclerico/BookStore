@@ -16,8 +16,8 @@ void runInterface(){
 
 int main() {
     //Uncomment either the tester the interface to run
-    runTest();
-    //runInterface();
+    //runTest();
+    runInterface();
 
 
     return 0;

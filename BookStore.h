@@ -14,7 +14,6 @@ class BookStore {
 private:
     Inventory* inventory; //linkedList of books
     int numBooks;
-    bool sorted;
 
 
 public:
@@ -27,7 +26,7 @@ public:
 
     void outputInventory();
 
-    void inquire(std::string title);
+    std::string inquire(std::string title);
 
     std::string list();
 
