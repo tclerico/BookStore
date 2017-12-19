@@ -6,7 +6,6 @@
 #include "LinkedList.h"
 #include "BookStore.h"
 #include <fstream>
-#include <cstdlib>
 #include <iostream>
 
 BookStore::BookStore() {
@@ -237,6 +236,11 @@ void BookStore::delivery(){
             }
         }
     }
+}
+
+void BookStore::modify(std::string title, int newWant){
+    Book* bookToChange = this->getBook(title);
+    bookToChange->setWant(newWant);
 }
 
 void BookStore::returnBooks(){

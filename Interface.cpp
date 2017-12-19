@@ -6,12 +6,12 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <locale>
+#include "Interface.h"
 using namespace std;
 
 
 
-void run(){
+void Interface::run(){
 
     BookStore* store = new BookStore();
     store->readInventory();
@@ -95,7 +95,7 @@ void run(){
                     std::cout<<"Invalid Input, Try Again"<<std::endl;
                 }
             }
-            store->getBook(title)->setWant(std::stoi(newWant));
+            store->modify(title, std::stoi(newWant));
             std::cout<<"Value Successfully Changed"<<std::endl;
 
         } else if (userInput == "S"){
@@ -151,8 +151,4 @@ void run(){
 
     }
 
-}
-
-int main(){
-    run();
 }

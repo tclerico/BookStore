@@ -19,42 +19,42 @@ Hatchet
 6
 no
 History of Wolves
-3
+1
 3
 no
 Homegoing
 3
-3
+5
 no
 Housekeeping
-3
-3
+2
+8
 no
 Legend
-1
-1
+3
+9
 no
 Mr. Pnumbra's Bookstore
-2
-2
+6
+4
 no
 Pet Sematary
-5
+6
 5
 no
 The Great Gatsby
-3
+2
 3
 no
 The Life of Pi
-2
-2
+5
+4
 no
 The Storied Life of AJ Thicker
-4
-4
+2
+3
 no
 Virgin Suicide
-4
-4
+1
+1
 no
