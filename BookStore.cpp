@@ -3,7 +3,7 @@
 //
 
 
-#include "LinkedList.h"
+#include "LinkedInventory.h"
 #include "BookStore.h"
 #include <fstream>
 #include <iostream>
@@ -11,7 +11,6 @@
 BookStore::BookStore() {
     inventory = new LinkedList();
     numBooks = 0;
-    sorted = false;
 }
 
 
@@ -20,11 +19,8 @@ void BookStore::add(std::string title, int have, int want) {
     int bookFound = inventory->find(title);
     if (bookFound == -1) {
         Book* bookToAdd = new Book(title, have, want);
-        //inventory->insertAtFront(bookToAdd);
         inventory->insert(bookToAdd);
         numBooks++;
-        //outputInventory();
-        //sorted = false;
     } else {
         std::cout << "That book already exists." << std::endl;
         std::cout << inventory->getBookAt(bookFound)->toString() << std::endl;

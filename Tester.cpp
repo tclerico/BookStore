@@ -99,8 +99,9 @@ void Tester::bookStoreTester() {
     std::cout<< store->list()<< std::endl;
 
     cout<<"TESTING SELL: A Darker Shade of Magic"<<endl;
+    int numbooks = store->getBook("A Darker Shade of Magic")->getHave();
     store->sell("A Darker Shade of Magic");
-    cout<<"HAVE SHOULD EQUAL 4"<<endl;
+    cout<<"HAVE SHOULD EQUAL " << numbooks-1 << endl;
     store->inquire("A Darker Shade of Magic");
 
     cout<<"\nTesting Add"<<endl;
@@ -119,7 +120,7 @@ void Tester::bookStoreTester() {
 
     cout<<"\nTesting Order and Delivery"<<endl;
     store->order();
-    cout<<"All books with have values less than want values should be equal now:"<<endl;
+    cout<<"All books should now have equal haves and wants (because we did a also did a return previously) :"<<endl;
     store->delivery();
     cout << store->list() << endl;
 }

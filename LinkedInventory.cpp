@@ -3,7 +3,7 @@
 //
 
 
-#include "LinkedList.h"
+#include "LinkedInventory.h"
 
 
 //O(1)
